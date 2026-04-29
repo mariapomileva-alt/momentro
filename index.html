@@ -64,6 +64,21 @@
     .top-actions {
       display: flex;
       gap: 10px;
+      align-items: center;
+    }
+
+    .download-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .download-options {
+      font-size: 11px;
+      color: #5f7189;
+      letter-spacing: 0.2px;
+      font-weight: 700;
     }
 
     .btn {
@@ -121,6 +136,11 @@
       margin-bottom: 18px;
     }
 
+    .hero .cta .btn {
+      padding: 12px 18px;
+      font-size: 14px;
+    }
+
     .hero .btn-primary {
       background: var(--green);
       color: #0d1a2f;
@@ -136,6 +156,14 @@
       color: #b9d4b3;
       font-size: 13px;
       letter-spacing: 0.25px;
+    }
+
+    .hero-trust {
+      margin-top: 8px;
+      color: #c8dbf3;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
     .trust-row {
@@ -474,6 +502,29 @@
       flex-wrap: wrap;
     }
 
+    .final-cta-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .final-cta-buttons .btn {
+      padding: 12px 18px;
+      font-size: 14px;
+      background: var(--green);
+      color: #0d1a2f;
+      border-color: var(--green);
+    }
+
+    .final-cta-trust {
+      width: 100%;
+      color: #d2e5fb;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
     .final-cta h3 {
       margin: 0 0 6px;
       font-size: 34px;
@@ -507,6 +558,7 @@
       .row { grid-template-columns: 1fr; }
       .hero h1 { font-size: 46px; }
       .mock { aspect-ratio: 16 / 9; }
+      .download-wrap { align-items: stretch; }
     }
   </style>
 </head>
@@ -519,21 +571,24 @@
       </div>
       <nav class="top-actions">
         <a class="btn btn-light" href="#">See how it works</a>
-        <a class="btn btn-primary" href="#">Try Momentro</a>
+        <div class="download-wrap">
+          <a class="btn btn-primary" href="#">Download app</a>
+          <div class="download-options">Mac · Windows</div>
+        </div>
       </nav>
     </header>
 
     <section class="hero">
       <div>
-        <h1>Your best memories, finally in one video you'll watch.</h1>
+        <h1>Your best memories, finally in one film.</h1>
         <p>
-          Most people never watch their travel clips again.
-          We turn them into one story - in minutes.
+          Drop all your clips into Momentro. Our desktop app finds the best moments, cuts the chaos, adds music and titles, and gives you one beautiful video.
         </p>
         <div class="cta">
-          <a class="btn btn-primary" href="#">Make my video now</a>
-          <a class="btn btn-light" href="#">Watch demo</a>
+          <a class="btn btn-primary" href="#">Download for Mac</a>
+          <a class="btn btn-light" href="#">Download for Windows</a>
         </div>
+        <div class="hero-trust">Free early access · Desktop app · Your files stay on your computer</div>
         <div class="micro-proof">Too many clips. Zero time. One finished video.</div>
         <div class="trust-row">
           <span class="trust-pill">Before: camera roll chaos</span>
@@ -575,7 +630,7 @@
       <div>
         <h2>We turn chaos into one story.</h2>
         <p>
-          Upload everything once. Momentro AI picks the best moments, orders them, and gives you a finished cinematic story you actually want to watch.
+          Add everything once. Momentro picks the best moments, orders them, and gives you a finished story you actually want to watch.
         </p>
       </div>
       <div class="price-box">
@@ -587,27 +642,27 @@
 
     <section class="compare">
       <h2>How it works</h2>
-      <p class="section-intro">No editing skills needed. Just follow three simple steps.</p>
+      <p class="section-intro">No editing skills needed. Just three simple steps.</p>
       <div class="compare-table">
         <div class="row header">
           <span>Step</span>
-          <span>What you do</span>
-          <span>What Momentro does</span>
+          <span>What happens</span>
+          <span>Outcome</span>
         </div>
         <div class="row">
-          <span>1. Add clips</span>
-          <span class="yes">Drop all your video files</span>
-          <span class="yes">Imports and sorts everything</span>
+          <span>1. Download Momentro</span>
+          <span class="yes">Install the desktop app on Mac or Windows.</span>
+          <span class="yes">Ready in minutes.</span>
         </div>
         <div class="row">
-          <span>2. Pick mood</span>
-          <span class="yes">Choose style and length</span>
-          <span class="yes">Builds one cinematic cut</span>
+          <span>2. Drop your clips</span>
+          <span class="yes">Add videos from your phone, GoPro, camera, or folders.</span>
+          <span class="yes">Everything in one place.</span>
         </div>
         <div class="row">
-          <span>3. Enjoy + share</span>
-          <span class="yes">Click export</span>
-          <span class="yes">Adds music and titles automatically</span>
+          <span>3. Get your film</span>
+          <span class="yes">Momentro creates a ready-to-watch cinematic video with music and titles.</span>
+          <span class="yes">Watch and share.</span>
         </div>
       </div>
     </section>
@@ -640,10 +695,14 @@
     <section class="final-cta">
       <div>
         <h3>Stop storing memories. Start watching them.</h3>
-        <p>In a few clicks, your scattered clips become one premium cinematic film.</p>
+        <p>In a few clicks, your scattered clips become one finished film on your computer.</p>
         <div class="urgency">Early access pricing is live now.</div>
       </div>
-      <a class="btn btn-primary" href="#">Create my Momentro film</a>
+      <div class="final-cta-buttons">
+        <a class="btn btn-primary" href="#">Download Momentro for Mac</a>
+        <a class="btn btn-primary" href="#">Download Momentro for Windows</a>
+      </div>
+      <div class="final-cta-trust">Free early access · Mac and Windows · No editing skills needed</div>
     </section>
 
     <footer>
