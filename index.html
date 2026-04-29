@@ -556,7 +556,7 @@
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
         ></video>
 
         <div id="momentroHeroFallback" class="mock-fallback">
@@ -598,18 +598,23 @@
         v.style.opacity = "0";
         v.style.display = "block";
 
-        v.addEventListener("canplay", hideFallback, { once: true });
-        v.addEventListener("loadeddata", hideFallback, { once: true });
+        // Show video only when playback really starts.
+        v.addEventListener("playing", hideFallback, { once: true });
         v.addEventListener("error", showFallback);
 
-        // Some browsers block autoplay; if so, fallback will remain visible.
-        try {
-          v.play();
-        } catch (_) {}
+        // Skip opening blank frame often found in exported videos.
+        v.addEventListener("loadedmetadata", function () {
+          try {
+            if (v.duration && v.duration > 1) {
+              v.currentTime = 0.35;
+            }
+          } catch (_) {}
+        }, { once: true });
 
-        // If browser already has enough data (cache/fast load), switch immediately.
-        if (v.readyState >= 2) {
-          hideFallback();
+        // Some browsers block autoplay; keep fallback if playback doesn't start.
+        const playPromise = v.play();
+        if (playPromise && typeof playPromise.then === "function") {
+          playPromise.catch(showFallback);
         }
       })();
     </script>
