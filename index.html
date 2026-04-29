@@ -382,6 +382,48 @@
       text-transform: uppercase;
     }
 
+    .step-visual.preview {
+      padding: 0;
+      overflow: hidden;
+      border-color: #b7db98;
+      background: #0f1f37;
+      position: relative;
+      display: block;
+    }
+
+    .step-visual.preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.98) contrast(1.02);
+    }
+
+    .step-visual.preview::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.22) 100%);
+      pointer-events: none;
+    }
+
+    .preview-badge {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      z-index: 2;
+      background: rgba(15, 26, 47, 0.55);
+      color: #f4ffef;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      text-transform: none;
+      backdrop-filter: blur(6px);
+    }
+
     .step-download .step-visual {
       background: linear-gradient(140deg, #f8fcff 0%, #e7f2ff 100%);
     }
@@ -774,7 +816,10 @@
         <article class="step-card step-final">
           <h3>Get your film</h3>
           <p>A story worth watching.</p>
-          <div class="step-visual">Cinematic preview</div>
+          <div class="step-visual preview">
+            <img src="final-result-city.png" alt="Cinematic travel moment preview" loading="lazy" decoding="async" />
+            <span class="preview-badge">Final result</span>
+          </div>
         </article>
       </div>
       <div class="compare-cta">
