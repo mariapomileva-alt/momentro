@@ -96,6 +96,12 @@
       color: #f6fff1;
     }
 
+    .btn-disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     .hero {
       background: linear-gradient(130deg, var(--navy) 5%, var(--navy-2) 100%);
       border-radius: 26px;
@@ -566,7 +572,7 @@
       <nav class="top-actions">
         <a class="btn btn-light" href="#">See how it works</a>
         <div class="download-wrap">
-          <a class="btn btn-primary" href="#">Download app</a>
+          <a class="btn btn-primary" href="#">Download for Windows</a>
         </div>
       </nav>
     </header>
@@ -578,10 +584,10 @@
           Drop all your clips into Momentro. The desktop app handles big files locally, cuts the chaos, adds music and titles, and gives you one beautiful video.
         </p>
         <div class="cta">
-          <a class="btn btn-primary" href="#">Download for Mac</a>
-          <a class="btn btn-light" href="#">Download for Windows</a>
+          <a class="btn btn-primary" href="#">Download for Windows</a>
+          <a class="btn btn-light btn-disabled" href="#" aria-disabled="true">Mac coming soon</a>
         </div>
-        <div class="hero-trust">Free early access · Desktop app · Your files stay on your computer</div>
+        <div class="hero-trust">Free early access · Windows app available now · Your files stay on your computer</div>
         <div class="micro-proof">Too many clips. Zero time. One finished video.</div>
         <div class="trust-row">
           <span class="trust-pill">Before: camera roll chaos</span>
@@ -644,7 +650,7 @@
         </div>
         <div class="row">
           <span>1. Download Momentro</span>
-          <span class="yes">Install the desktop app on Mac or Windows.</span>
+          <span class="yes">Install the desktop app on Windows.</span>
           <span class="yes">Ready in minutes.</span>
         </div>
         <div class="row">
@@ -692,10 +698,10 @@
         <div class="urgency">Early access pricing is live now.</div>
       </div>
       <div class="final-cta-buttons">
-        <a class="btn btn-primary" href="#">Download Momentro for Mac</a>
         <a class="btn btn-primary" href="#">Download Momentro for Windows</a>
+        <a class="btn btn-primary btn-disabled" href="#" aria-disabled="true">Mac app coming soon</a>
       </div>
-      <div class="final-cta-trust">Free early access · Mac and Windows · Big files, no cloud upload</div>
+      <div class="final-cta-trust">Free early access · Windows available now · Mac coming soon</div>
     </section>
 
     <footer>
