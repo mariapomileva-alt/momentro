@@ -169,8 +169,14 @@
     .trust-row {
       margin-top: 14px;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .trust-row::-webkit-scrollbar {
+      display: none;
     }
 
     .trust-pill {
@@ -559,6 +565,7 @@
       .hero h1 { font-size: 46px; }
       .mock { aspect-ratio: 16 / 9; }
       .download-wrap { align-items: stretch; }
+      .trust-row { flex-wrap: wrap; overflow-x: visible; }
     }
   </style>
 </head>
