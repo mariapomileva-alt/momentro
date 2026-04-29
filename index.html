@@ -305,11 +305,12 @@
     }
 
     .compare {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 24px;
+      background: linear-gradient(150deg, #f8fcf3 0%, #f2f8ed 100%);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 26px;
+      box-shadow: 0 18px 40px rgba(15, 34, 62, 0.08);
+      border: 1px solid #e0ecd3;
     }
 
     .compare h2, .testimonials h2, .faq h2 {
@@ -325,37 +326,143 @@
       max-width: 760px;
     }
 
-    .compare-table {
+    .steps-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 18px;
     }
 
-    .row {
-      display: grid;
-      grid-template-columns: 1.2fr 0.9fr 0.9fr;
-      gap: 10px;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fbfef8;
-      padding: 12px;
+    .step-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(15, 34, 62, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(15, 34, 62, 0.12);
+    }
+
+    .step-card h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 0.95;
+      color: #142b49;
+    }
+
+    .step-card p {
+      margin: 0;
       font-size: 14px;
+      color: #5a677f;
+      font-weight: 600;
     }
 
-    .row.header {
-      background: #edf8e2;
-      border-color: #cce4b6;
-      font-weight: 700;
+    .step-visual {
+      margin-top: auto;
+      border-radius: 14px;
+      min-height: 96px;
+      border: 1px solid #dfe8f5;
+      background: #f7fbff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #274566;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
     }
 
-    .yes {
-      color: #23462e;
-      font-weight: 700;
+    .step-download .step-visual {
+      background: linear-gradient(140deg, #f8fcff 0%, #e7f2ff 100%);
     }
 
-    .no {
-      color: #8b4750;
-      font-weight: 700;
+    .step-add .step-visual {
+      background: linear-gradient(140deg, #f8fcff 0%, #e9f5ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-add .step-visual::before,
+    .step-add .step-visual::after {
+      content: "";
+      position: absolute;
+      width: 34px;
+      height: 22px;
+      border-radius: 6px;
+      background: #d8e9ff;
+      top: 22px;
+      left: 18px;
+      animation: filesSlide 2.2s ease-in-out infinite;
+    }
+
+    .step-add .step-visual::after {
+      top: 50px;
+      left: 42px;
+      animation-delay: 0.45s;
+      background: #c7dcff;
+    }
+
+    @keyframes filesSlide {
+      0% { transform: translateX(0); opacity: 0.75; }
+      50% { transform: translateX(14px); opacity: 1; }
+      100% { transform: translateX(0); opacity: 0.75; }
+    }
+
+    .step-final {
+      background: linear-gradient(145deg, #f2ffe8 0%, #ecf9ff 100%);
+      border: 1px solid #cde8b2;
+      box-shadow: 0 16px 30px rgba(137, 255, 46, 0.18);
+      transform: scale(1.02);
+    }
+
+    .step-final .step-visual {
+      background: radial-gradient(circle at 80% 20%, #dbffc0 0%, #c7ffd5 34%, #cde5ff 100%);
+      border-color: #b7db98;
+      opacity: 0;
+      animation: previewFade 1.2s ease forwards;
+      animation-delay: 120ms;
+    }
+
+    @keyframes previewFade {
+      from { opacity: 0; transform: translateY(2px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-arrow {
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8ba5c7;
+      font-size: 20px;
+      font-weight: 900;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .compare-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .compare-cta .btn {
+      padding: 12px 22px;
+      font-size: 14px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: #f4ffef;
+      border-color: var(--navy);
     }
 
     .testimonials {
@@ -561,11 +668,13 @@
       .hero, .pricing { grid-template-columns: 1fr; }
       .features { grid-template-columns: 1fr; }
       .quote-grid { grid-template-columns: 1fr; }
-      .row { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 46px; }
       .mock { aspect-ratio: 16 / 9; }
       .download-wrap { align-items: stretch; }
       .trust-row { flex-wrap: wrap; overflow-x: visible; }
+      .step-final { transform: none; }
+      .step-arrow { display: none; }
     }
   </style>
 </head>
@@ -647,29 +756,29 @@
     </section>
 
     <section class="compare">
-      <h2>How it works</h2>
-      <p class="section-intro">No editing skills needed. Just three simple steps.</p>
-      <div class="compare-table">
-        <div class="row header">
-          <span>Step</span>
-          <span>What happens</span>
-          <span>Outcome</span>
-        </div>
-        <div class="row">
-          <span>1. Download Momentro</span>
-          <span class="yes">Install the desktop app on Windows.</span>
-          <span class="yes">Ready in minutes.</span>
-        </div>
-        <div class="row">
-          <span>2. Drop your clips</span>
-          <span class="yes">Add videos from your phone, GoPro, camera, folders, or a USB drive.</span>
-          <span class="yes">Everything in one place.</span>
-        </div>
-        <div class="row">
-          <span>3. Get your film</span>
-          <span class="yes">Momentro creates a ready-to-watch cinematic video with music and titles.</span>
-          <span class="yes">Watch and share.</span>
-        </div>
+      <h2>From chaos to story in 3 steps</h2>
+      <p class="section-intro">No editing skills needed.</p>
+      <div class="steps-grid">
+        <article class="step-card step-download">
+          <h3>Download</h3>
+          <p>Install the app in seconds.</p>
+          <div class="step-visual">App install</div>
+          <span class="step-arrow">→</span>
+        </article>
+        <article class="step-card step-add">
+          <h3>Add your clips</h3>
+          <p>Import everything at once.</p>
+          <div class="step-visual">Drag and drop</div>
+          <span class="step-arrow">→</span>
+        </article>
+        <article class="step-card step-final">
+          <h3>Get your film</h3>
+          <p>A story worth watching.</p>
+          <div class="step-visual">Cinematic preview</div>
+        </article>
+      </div>
+      <div class="compare-cta">
+        <a class="btn btn-primary" href="#">Start your story</a>
       </div>
     </section>
 
