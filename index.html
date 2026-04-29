@@ -278,6 +278,205 @@
       margin-bottom: 44px;
     }
 
+    .social-proof {
+      margin: 6px 0 26px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid #e3edd7;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 14px 30px rgba(15, 34, 62, 0.06);
+    }
+
+    .social-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .proof-item {
+      border-radius: 14px;
+      padding: 12px 12px;
+      background: linear-gradient(150deg, #ffffff 0%, #f6fbf0 100%);
+      border: 1px solid #e2efda;
+    }
+
+    .proof-item p {
+      margin: 0;
+      color: #2b3e5a;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15px;
+      line-height: 1.2;
+    }
+
+    .trust-block {
+      margin: 0 0 26px;
+      background: linear-gradient(145deg, #ffffff 0%, #f6fbf0 100%);
+      border: 1px solid #e0ecd3;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(15, 34, 62, 0.08);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .trust-block h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 0.95;
+    }
+
+    .trust-block p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      max-width: 560px;
+    }
+
+    .trust-list {
+      margin: 0;
+      padding-left: 16px;
+      color: #2b3e5a;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: 0.15px;
+      line-height: 1.55;
+    }
+
+    .trust-visual {
+      border-radius: 18px;
+      border: 1px solid #dbe8cf;
+      background: radial-gradient(circle at 30% 10%, #dbffc0 0%, #f6fff1 38%, #eaf4ff 100%);
+      padding: 18px;
+      min-height: 160px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trust-visual svg {
+      width: 72px;
+      height: 72px;
+    }
+
+    .trust-visual .caption {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #1f3b5a;
+      font-weight: 850;
+      letter-spacing: 0.2px;
+    }
+
+    .trust-visual .subcap {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #567091;
+      font-weight: 750;
+    }
+
+    .emotion {
+      margin: 6px 0 24px;
+      background: linear-gradient(145deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid #dde7f6;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(15, 34, 62, 0.08);
+    }
+
+    .emotion h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 0.95;
+    }
+
+    .emotion p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      max-width: 720px;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .ba-card {
+      border-radius: 18px;
+      border: 1px solid #dfe8f5;
+      background: #ffffff;
+      overflow: hidden;
+      position: relative;
+      min-height: 170px;
+    }
+
+    .ba-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      background: rgba(15, 26, 47, 0.55);
+      color: #f4ffef;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(6px);
+    }
+
+    .ba-messy {
+      height: 100%;
+      padding: 14px;
+      background: linear-gradient(145deg, #f8fafc 0%, #eef5ff 100%);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .file-row {
+      height: 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(16, 35, 61, 0.18), rgba(16, 35, 61, 0.06));
+    }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .file-tile {
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(16, 35, 61, 0.08);
+      border: 1px solid rgba(16, 35, 61, 0.10);
+    }
+
+    .ba-after img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.98) contrast(1.02);
+    }
+
+    .ba-after::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.16) 100%);
+      pointer-events: none;
+    }
+
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -806,6 +1005,9 @@
       .download-wrap { align-items: stretch; }
       .trust-row { flex-wrap: wrap; overflow-x: visible; }
       .step-final { transform: none; }
+      .social-proof-grid { grid-template-columns: 1fr; }
+      .trust-block { grid-template-columns: 1fr; }
+      .before-after { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -853,6 +1055,14 @@
           preload="auto"
         ></video>
 
+      </div>
+    </section>
+
+    <section class="social-proof" aria-label="Social proof">
+      <div class="social-proof-grid">
+        <div class="proof-item"><p>Built for people with thousands of clips</p></div>
+        <div class="proof-item"><p>Designed to save hours of editing</p></div>
+        <div class="proof-item"><p>Made for real life moments</p></div>
       </div>
     </section>
 
@@ -925,6 +1135,26 @@
       <div class="steps-trust">Works with local files. No cloud upload.</div>
     </section>
 
+    <section class="trust-block" aria-label="Privacy and local files">
+      <div>
+        <h2>No cloud. No uploads.</h2>
+        <p>Momentro works directly with your local files. Nothing leaves your computer.</p>
+        <ul class="trust-list">
+          <li>Your memories stay private</li>
+          <li>Works with big files and external drives</li>
+          <li>Use it offline, anytime</li>
+        </ul>
+      </div>
+      <div class="trust-visual" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 6C22 12 14 12 14 12v18c0 14 9 24 18 28 9-4 18-14 18-28V12s-8 0-18-6Z" stroke="#10233D" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M24 32l6 6 12-14" stroke="#89FF2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="caption">Local by default</div>
+        <div class="subcap">Your files stay with you.</div>
+      </div>
+    </section>
+
     <section class="testimonials">
       <h2>Made for real life moments</h2>
       <p class="section-intro">Use Momentro for the memories you care about most.</p>
@@ -947,6 +1177,33 @@
           <p>Weekend clips, family dinners, and random shots become one film worth watching.</p>
           <p class="who">Everyday life, beautifully saved</p>
         </article>
+      </div>
+    </section>
+
+    <section class="emotion" aria-label="Emotional connection">
+      <h2>Your moments deserve more than storage</h2>
+      <p>Thousands of videos sit on your devices. Momentro turns them into something you’ll actually want to revisit.</p>
+      <div class="before-after" aria-label="Before and after">
+        <div class="ba-card">
+          <span class="ba-label">Before</span>
+          <div class="ba-messy">
+            <div class="file-row" style="width: 78%"></div>
+            <div class="file-row" style="width: 62%"></div>
+            <div class="file-row" style="width: 70%"></div>
+            <div class="file-grid">
+              <div class="file-tile"></div>
+              <div class="file-tile"></div>
+              <div class="file-tile"></div>
+              <div class="file-tile"></div>
+              <div class="file-tile"></div>
+              <div class="file-tile"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-card ba-after">
+          <span class="ba-label">After</span>
+          <img src="final-result-city.png" alt="Finished film preview" loading="lazy" decoding="async" />
+        </div>
       </div>
     </section>
 
