@@ -380,6 +380,68 @@
       font-weight: 800;
       letter-spacing: 0.2px;
       text-transform: uppercase;
+      position: relative;
+    }
+
+    .install-ui {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #1c2f4b;
+    }
+
+    .install-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #10233d;
+      color: #89ff2e;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 20px rgba(16, 35, 61, 0.22);
+    }
+
+    .install-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .install-meta .name {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 900;
+      color: #132a49;
+      line-height: 1.1;
+    }
+
+    .install-meta .sub {
+      margin: 0;
+      font-size: 11px;
+      color: #6b7d94;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .install-bar {
+      margin-top: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #dbe7f6;
+      overflow: hidden;
+    }
+
+    .install-bar > span {
+      display: block;
+      height: 100%;
+      width: 76%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #89ff2e 0%, #baff7a 100%);
     }
 
     .step-visual.preview {
@@ -389,6 +451,11 @@
       background: #0f1f37;
       position: relative;
       display: block;
+      min-height: 132px;
+      opacity: 0;
+      transform: translateY(2px);
+      animation: previewFade 900ms ease forwards;
+      animation-delay: 120ms;
     }
 
     .step-visual.preview img {
@@ -434,6 +501,28 @@
       overflow: hidden;
     }
 
+    .dropzone {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 1px dashed rgba(40, 82, 128, 0.22);
+      background: rgba(255, 255, 255, 0.55);
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 900;
+      color: #1f3b5a;
+      gap: 2px;
+    }
+
+    .dropzone .hint {
+      font-size: 11px;
+      color: #6b7d94;
+      font-weight: 800;
+    }
+
     .step-add .step-visual::before,
     .step-add .step-visual::after {
       content: "";
@@ -463,16 +552,28 @@
     .step-final {
       background: linear-gradient(145deg, #f2ffe8 0%, #ecf9ff 100%);
       border: 1px solid #cde8b2;
-      box-shadow: 0 16px 30px rgba(137, 255, 46, 0.18);
-      transform: scale(1.02);
+      box-shadow: 0 18px 40px rgba(137, 255, 46, 0.20);
+      transform: scale(1.04);
     }
 
-    .step-final .step-visual {
-      background: radial-gradient(circle at 80% 20%, #dbffc0 0%, #c7ffd5 34%, #cde5ff 100%);
-      border-color: #b7db98;
-      opacity: 0;
-      animation: previewFade 1.2s ease forwards;
-      animation-delay: 120ms;
+    .step-final::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 26px;
+      background: radial-gradient(circle at 60% 20%, rgba(137, 255, 46, 0.22) 0%, rgba(137, 255, 46, 0.0) 58%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .step-final > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-final:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 24px 52px rgba(137, 255, 46, 0.22);
     }
 
     @keyframes previewFade {
@@ -480,22 +581,27 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .step-arrow {
-      position: absolute;
-      right: -13px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #8ba5c7;
-      font-size: 20px;
-      font-weight: 900;
-      z-index: 2;
-      pointer-events: none;
+    .magic-line {
+      text-align: center;
+      color: #607289;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      margin: 0 0 14px;
     }
 
     .compare-cta {
       display: flex;
       justify-content: center;
       margin-top: 2px;
+    }
+    .steps-trust {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #6b7d94;
+      font-weight: 800;
+      letter-spacing: 0.2px;
     }
 
     .compare-cta .btn {
@@ -716,7 +822,6 @@
       .download-wrap { align-items: stretch; }
       .trust-row { flex-wrap: wrap; overflow-x: visible; }
       .step-final { transform: none; }
-      .step-arrow { display: none; }
     }
   </style>
 </head>
@@ -803,28 +908,42 @@
       <div class="steps-grid">
         <article class="step-card step-download">
           <h3>Download</h3>
-          <p>Install the app in seconds.</p>
-          <div class="step-visual">App install</div>
-          <span class="step-arrow">→</span>
+          <p>Ready in seconds.</p>
+          <div class="step-visual" aria-hidden="true">
+            <div class="install-ui">
+              <div class="install-icon">M</div>
+              <div class="install-meta">
+                <p class="name">Momentro</p>
+                <p class="sub">Installing…</p>
+                <div class="install-bar"><span></span></div>
+              </div>
+            </div>
+          </div>
         </article>
         <article class="step-card step-add">
           <h3>Add your clips</h3>
-          <p>Import everything at once.</p>
-          <div class="step-visual">Drag and drop</div>
-          <span class="step-arrow">→</span>
+          <p>Drop everything in.</p>
+          <div class="step-visual" aria-hidden="true">
+            <div class="dropzone">
+              <div>Drag &amp; drop</div>
+              <div class="hint">folders + files</div>
+            </div>
+          </div>
         </article>
         <article class="step-card step-final">
           <h3>Get your film</h3>
-          <p>A story worth watching.</p>
+          <p>A story you'll actually watch.</p>
           <div class="step-visual preview">
             <img src="final-result-city.png" alt="Cinematic travel moment preview" loading="lazy" decoding="async" />
-            <span class="preview-badge">Final result</span>
+            <span class="preview-badge">Ready to watch</span>
           </div>
         </article>
       </div>
+      <div class="magic-line">No editing. No timeline. Just a film.</div>
       <div class="compare-cta">
-        <a class="btn btn-primary" href="#">Start your story</a>
+        <a class="btn btn-primary" href="#">Create your film</a>
       </div>
+      <div class="steps-trust">Works with local files. No cloud upload.</div>
     </section>
 
     <section class="testimonials">
