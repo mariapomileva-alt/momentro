@@ -1,0 +1,11 @@
+<svg width="820" height="220" viewBox="0 0 820 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Momentro logo on dark">
+  <!-- Transparent background version for dark video -->
+  <g transform="translate(0,0)">
+    <!-- Green mark (no background rect so it works on dark scenes) -->
+    <path d="M58 160V62H84L110 102L136 62H162V160" stroke="#89FF2E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="168" cy="52" r="14" fill="#89FF2E"/>
+
+    <!-- Light text for dark backgrounds -->
+    <text x="235" y="140" fill="#FFFFFF" font-family="Mikado, Avenir Next, Inter, sans-serif" font-size="96" font-weight="700" letter-spacing="0.5">Momentro</text>
+  </g>
+</svg>
