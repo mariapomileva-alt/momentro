@@ -583,12 +583,18 @@
         v.style.display = "block";
 
         v.addEventListener("canplay", hideFallback, { once: true });
+        v.addEventListener("loadeddata", hideFallback, { once: true });
         v.addEventListener("error", showFallback);
 
         // Some browsers block autoplay; if so, fallback will remain visible.
         try {
           v.play();
         } catch (_) {}
+
+        // If browser already has enough data (cache/fast load), switch immediately.
+        if (v.readyState >= 2) {
+          hideFallback();
+        }
       })();
     </script>
 
