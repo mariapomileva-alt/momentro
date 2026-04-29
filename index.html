@@ -602,11 +602,13 @@
         v.addEventListener("playing", hideFallback, { once: true });
         v.addEventListener("error", showFallback);
 
-        // Skip opening blank frame often found in exported videos.
+        // Skip opening blank/pink intro frames often found in exported videos.
         v.addEventListener("loadedmetadata", function () {
           try {
-            if (v.duration && v.duration > 1) {
-              v.currentTime = 0.35;
+            if (v.duration && v.duration > 2.2) {
+              v.currentTime = 2.0;
+            } else if (v.duration && v.duration > 1) {
+              v.currentTime = 0.8;
             }
           } catch (_) {}
         }, { once: true });
