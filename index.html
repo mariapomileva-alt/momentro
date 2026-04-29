@@ -184,8 +184,7 @@
       background: #0f1f37;
       z-index: 1;
       border-radius: 12px;
-      opacity: 0;
-      transition: opacity 240ms ease-in-out;
+      opacity: 1;
     }
 
     .mock-fallback {
@@ -195,6 +194,7 @@
       padding: 12px;
       background: #1f3a62;
       z-index: 0;
+      display: none;
     }
 
     .mock-head {
@@ -549,7 +549,6 @@
       </div>
       <div class="mock">
         <video
-          id="momentroHeroVideo"
           class="mock-video"
           src="momentro-hero.mp4"
           autoplay
@@ -559,67 +558,9 @@
           preload="auto"
         ></video>
 
-        <div id="momentroHeroFallback" class="mock-fallback">
-          <div class="mock-head"></div>
-          <div class="mock-head" style="width: 78%;"></div>
-          <div class="timeline">
-            <div class="clip"></div>
-            <div class="clip muted"></div>
-            <div class="clip" style="width: 84%;"></div>
-            <div class="clip"></div>
-            <div class="clip muted" style="width: 65%;"></div>
-          </div>
-          <div class="scribble"></div>
-        </div>
-
         <div class="pill">Film ready in minutes</div>
       </div>
     </section>
-
-    <script>
-      (function () {
-        const v = document.getElementById("momentroHeroVideo");
-        const fb = document.getElementById("momentroHeroFallback");
-        if (!v || !fb) return;
-
-        function showFallback() {
-          v.style.display = "none";
-          fb.style.display = "block";
-        }
-
-        function hideFallback() {
-          fb.style.display = "none";
-          v.style.display = "block";
-          v.style.opacity = "1";
-        }
-
-        // Start with fallback visible until video is actually ready.
-        fb.style.display = "block";
-        v.style.opacity = "0";
-        v.style.display = "block";
-
-        // Show video only when playback really starts.
-        v.addEventListener("playing", hideFallback, { once: true });
-        v.addEventListener("error", showFallback);
-
-        // Skip opening blank/pink intro frames often found in exported videos.
-        v.addEventListener("loadedmetadata", function () {
-          try {
-            if (v.duration && v.duration > 2.2) {
-              v.currentTime = 2.0;
-            } else if (v.duration && v.duration > 1) {
-              v.currentTime = 0.8;
-            }
-          } catch (_) {}
-        }, { once: true });
-
-        // Some browsers block autoplay; keep fallback if playback doesn't start.
-        const playPromise = v.play();
-        if (playPromise && typeof playPromise.then === "function") {
-          playPromise.catch(showFallback);
-        }
-      })();
-    </script>
 
     <section class="features">
       <article class="card">
