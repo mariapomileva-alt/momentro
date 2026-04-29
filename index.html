@@ -436,29 +436,88 @@
       height: 100%;
       padding: 14px;
       background: linear-gradient(145deg, #f8fafc 0%, #eef5ff 100%);
-      display: grid;
-      gap: 10px;
-      align-content: start;
+      position: relative;
+      overflow: hidden;
     }
 
-    .file-row {
-      height: 16px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(16, 35, 61, 0.18), rgba(16, 35, 61, 0.06));
+    .roll-title {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.18px;
+      color: rgba(16, 35, 61, 0.55);
+      text-transform: uppercase;
     }
 
-    .file-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 2px;
+    .thumb {
+      position: absolute;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(16, 35, 61, 0.12);
+      box-shadow: 0 14px 28px rgba(15, 34, 62, 0.10);
+      background: rgba(16, 35, 61, 0.10);
+      transform-origin: center;
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
-    .file-tile {
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(16, 35, 61, 0.08);
-      border: 1px solid rgba(16, 35, 61, 0.10);
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(0.96) contrast(1.02);
+    }
+
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.22) 100%);
+      pointer-events: none;
+    }
+
+    .thumb .meta {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      right: 8px;
+      z-index: 2;
+      font-size: 10px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 850;
+      letter-spacing: 0.15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.35);
+    }
+
+    .thumb:hover {
+      transform: translateY(-2px) rotate(var(--r));
+      box-shadow: 0 18px 34px rgba(15, 34, 62, 0.14);
+    }
+
+    /* messy camera roll positions (intentionally imperfect) */
+    .t1 { left: 14px; top: 24px; width: 132px; height: 92px; --r: -2deg; transform: rotate(-2deg); }
+    .t2 { left: 118px; top: 54px; width: 96px; height: 132px; --r: 1.5deg; transform: rotate(1.5deg); }
+    .t3 { left: 236px; top: 30px; width: 146px; height: 98px; --r: 2.2deg; transform: rotate(2.2deg); }
+    .t4 { left: 22px; top: 122px; width: 110px; height: 140px; --r: 1.2deg; transform: rotate(1.2deg); }
+    .t5 { left: 158px; top: 174px; width: 154px; height: 104px; --r: -1.6deg; transform: rotate(-1.6deg); }
+    .t6 { left: 326px; top: 138px; width: 108px; height: 148px; --r: 2.6deg; transform: rotate(2.6deg); opacity: 0.92; }
+
+    .roll-noise {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(16,35,61,0.06) 0%, rgba(16,35,61,0) 40%),
+        radial-gradient(circle at 80% 70%, rgba(16,35,61,0.05) 0%, rgba(16,35,61,0) 45%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 6px);
+      opacity: 0.7;
+      pointer-events: none;
+      mix-blend-mode: overlay;
     }
 
     .ba-after img {
@@ -467,6 +526,8 @@
       object-fit: cover;
       display: block;
       filter: saturate(0.98) contrast(1.02);
+      transform: scale(1);
+      transition: transform 220ms ease;
     }
 
     .ba-after::after {
@@ -475,6 +536,32 @@
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.16) 100%);
       pointer-events: none;
+    }
+
+    .ba-after::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.22) 100%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 6px);
+      opacity: 0.55;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      z-index: 2;
+    }
+
+    .ba-after:hover img {
+      transform: scale(1.03);
+    }
+
+    .ba-magic {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #607289;
+      font-weight: 850;
+      letter-spacing: 0.2px;
     }
 
     .card {
@@ -1181,22 +1268,39 @@
 
     <section class="emotion" aria-label="Emotional connection">
       <h2>Your moments deserve more than storage</h2>
-      <p>Thousands of videos sit on your devices. Momentro turns them into something you’ll actually want to revisit.</p>
+      <p>Thousands of videos sit on your devices. Most are never watched again. Momentro turns them into something you’ll actually want to revisit.</p>
       <div class="before-after" aria-label="Before and after">
         <div class="ba-card">
           <span class="ba-label">Before</span>
           <div class="ba-messy">
-            <div class="file-row" style="width: 78%"></div>
-            <div class="file-row" style="width: 62%"></div>
-            <div class="file-row" style="width: 70%"></div>
-            <div class="file-grid">
-              <div class="file-tile"></div>
-              <div class="file-tile"></div>
-              <div class="file-tile"></div>
-              <div class="file-tile"></div>
-              <div class="file-tile"></div>
-              <div class="file-tile"></div>
+            <div class="roll-title">Camera Roll</div>
+
+            <div class="thumb t1">
+              <img src="final-result-sea.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2841.MOV · 0:13</div>
             </div>
+            <div class="thumb t2">
+              <img src="final-result-mountains.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2842.MOV · 0:08</div>
+            </div>
+            <div class="thumb t3">
+              <img src="final-result-city.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2843.MOV · 0:21</div>
+            </div>
+            <div class="thumb t4">
+              <img src="final-result-city.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2843 (1).MOV</div>
+            </div>
+            <div class="thumb t5">
+              <img src="final-result-sea.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2844.MOV · 0:05</div>
+            </div>
+            <div class="thumb t6">
+              <img src="final-result-mountains.png" alt="" loading="lazy" decoding="async" />
+              <div class="meta">IMG_2845.MOV · 0:09</div>
+            </div>
+
+            <div class="roll-noise"></div>
           </div>
         </div>
         <div class="ba-card ba-after">
@@ -1204,6 +1308,7 @@
           <img src="final-result-city.png" alt="Finished film preview" loading="lazy" decoding="async" />
         </div>
       </div>
+      <div class="ba-magic">Momentro turns it into a film — automatically.</div>
     </section>
 
     <section class="final-cta">
