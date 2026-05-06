@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momentro - Turn Footage Into One Beautiful Film</title>
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32-v2.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16-v2.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-v2.png" />
+  <link rel="shortcut icon" href="favicon.ico?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32-v2.png?v=3" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16-v2.png?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-v2.png?v=3" />
   <link rel="preload" href="assets/fonts/mikado-700-normal.woff2" as="font" type="font/woff2" crossorigin />
   <style>
     @font-face {
@@ -290,7 +290,8 @@
     .ui-showcase .shot {
       position: absolute;
       inset: -8%;
-      background-size: cover;
+      background-size: var(--bs, 165%) auto;
+      background-position: var(--bx, 50%) var(--by, 45%);
       background-repeat: no-repeat;
       transform: translate(var(--x, 0px), var(--y, 0px)) scale(var(--s, 1.12));
       filter: blur(var(--blur, 10px)) saturate(1.05) contrast(1.04);
@@ -339,7 +340,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ui-showcase .shot { filter: none; transform: none; }
+      .ui-showcase .shot { filter: none; transform: none; transition: none; }
     }
 
     .mock-fallback {
@@ -1456,44 +1457,45 @@
       const showcase = document.getElementById("uiShowcase");
       if (!showcase) return;
 
+      const uiSrc = "assets/ui/momentro-app.png";
       const shots = [
-        { el: document.getElementById("shot1"), src: "assets/ui/scene-1-upload.png", caption: "Upload files" , x: -14, y: 8, s: 1.20, blur: 0 },
-        { el: document.getElementById("shot2"), src: "assets/ui/scene-2-analyze.png", caption: "Moments get organized", x: 10, y: -6, s: 1.18, blur: 0 },
-        { el: document.getElementById("shot3"), src: "assets/ui/scene-3-timeline.png", caption: "Timeline builds itself", x: -6, y: -10, s: 1.22, blur: 0 },
-        { el: document.getElementById("shot4"), src: "assets/ui/scene-4-export.png", caption: "Export your film", x: 8, y: 10, s: 1.16, blur: 0 },
-      ];
+        { el: document.getElementById("shot1"), caption: "Add your files", bx: 48, by: 11, bs: "188%", x: -12, y: 6, s: 1.18 },
+        { el: document.getElementById("shot2"), caption: "Optimize & analyze", bx: 38, by: 30, bs: "182%", x: 8, y: -5, s: 1.16 },
+        { el: document.getElementById("shot3"), caption: "Timeline comes together", bx: 52, by: 46, bs: "175%", x: -7, y: -8, s: 1.2 },
+        { el: document.getElementById("shot4"), caption: "Export your film", bx: 50, by: 76, bs: "178%", x: 6, y: 9, s: 1.15 },
+      ].filter((s) => s.el);
 
       const captionEl = document.getElementById("uiCaption");
       const captionText = captionEl ? captionEl.querySelector("span:last-child") : null;
 
-      // Only enable if the UI assets exist
-      fetch(shots[0].src, { method: "HEAD" }).then((r) => {
-        if (!r.ok) return;
+      function enableShowcase() {
+        if (!shots.length) return;
 
         const video = document.querySelector(".mock-video");
         if (video) video.style.display = "none";
         showcase.style.display = "block";
 
         shots.forEach((s) => {
-          s.el.style.backgroundImage = `url(${s.src})`;
-          s.el.style.setProperty("--x", `${s.x}px`);
-          s.el.style.setProperty("--y", `${s.y}px`);
-          s.el.style.setProperty("--s", `${s.s}`);
-          s.el.style.setProperty("--blur", `${s.blur}px`);
+          s.el.style.backgroundImage = `url(${uiSrc})`;
+          s.el.style.setProperty("--bx", `${s.bx}%`);
+          s.el.style.setProperty("--by", `${s.by}%`);
+          s.el.style.setProperty("--bs", s.bs || "170%");
         });
 
         let i = 0;
         function show(idx) {
           shots.forEach((s, n) => {
-            s.el.style.transition = "opacity 700ms ease, transform 1100ms cubic-bezier(.2,.8,.2,1), filter 900ms ease";
-            if (n === idx) {
-              s.el.style.opacity = "1";
+            s.el.style.transition =
+              "opacity 700ms ease, transform 1100ms cubic-bezier(.2,.8,.2,1), filter 900ms ease, background-position 1200ms cubic-bezier(.2,.8,.2,1), background-size 1200ms cubic-bezier(.2,.8,.2,1)";
+            const on = n === idx;
+            s.el.style.opacity = on ? "1" : "0";
+            s.el.style.setProperty("--x", `${on ? s.x : s.x * 0.55}px`);
+            s.el.style.setProperty("--y", `${on ? s.y : s.y * 0.55}px`);
+            s.el.style.setProperty("--s", on ? `${s.s}` : `${Math.max(1.06, s.s - 0.05)}`);
+            if (on) {
               s.el.style.filter = "blur(0px) saturate(1.06) contrast(1.05)";
-              s.el.style.transform = `translate(${s.x}px, ${s.y}px) scale(${s.s})`;
             } else {
-              s.el.style.opacity = "0";
               s.el.style.filter = "blur(10px) saturate(1.02) contrast(1.02)";
-              s.el.style.transform = `translate(${s.x * 0.6}px, ${s.y * 0.6}px) scale(${Math.max(1.08, s.s - 0.06)})`;
             }
           });
           if (captionText) captionText.textContent = shots[idx].caption;
@@ -1504,7 +1506,15 @@
           i = (i + 1) % shots.length;
           show(i);
         }, 2400);
-      }).catch(() => {});
+      }
+
+      // Works both on http(s) and file://
+      try {
+        const img = new Image();
+        img.onload = () => enableShowcase();
+        img.onerror = () => {};
+        img.src = uiSrc;
+      } catch (e) {}
     })();
   </script>
 </body>
