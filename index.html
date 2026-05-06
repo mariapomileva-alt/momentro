@@ -814,24 +814,30 @@
       background: linear-gradient(140deg, #f8fcff 0%, #e7f2ff 100%);
     }
 
+    .step-card.step-add {
+      min-height: 248px;
+    }
+
     .step-add .step-visual {
       background: linear-gradient(140deg, #f8fcff 0%, #e9f5ff 100%);
       position: relative;
       overflow: hidden;
+      margin-top: 0;
+      flex: 1 1 auto;
+      min-height: 0;
       flex-direction: column;
       align-items: stretch;
-      justify-content: flex-start;
+      justify-content: center;
       gap: 8px;
       padding: 10px 10px 8px;
-      min-height: 148px;
     }
 
     .add-flow {
-      flex: 1;
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
+      min-height: 0;
       padding: 2px 0 4px;
     }
 
