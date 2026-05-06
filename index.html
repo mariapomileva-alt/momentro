@@ -261,6 +261,87 @@
       opacity: 1;
     }
 
+    /* UI showcase (replaces video when UI assets exist) */
+    .ui-showcase {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0f1f37;
+      z-index: 1;
+      display: none;
+    }
+
+    .ui-showcase .stage {
+      position: absolute;
+      inset: 0;
+      transform: translateZ(0);
+    }
+
+    .ui-showcase .frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0f1f37;
+    }
+
+    .ui-showcase .shot {
+      position: absolute;
+      inset: -8%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform: translate(var(--x, 0px), var(--y, 0px)) scale(var(--s, 1.12));
+      filter: blur(var(--blur, 10px)) saturate(1.05) contrast(1.04);
+      opacity: 0;
+    }
+
+    .ui-showcase .shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 55% 35%, rgba(137,255,46,0.12) 0%, rgba(137,255,46,0) 52%),
+                  linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.36) 100%);
+      pointer-events: none;
+    }
+
+    .ui-showcase .caption {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(15, 26, 47, 0.60);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      color: #f4ffef;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.15px;
+      max-width: calc(100% - 28px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ui-showcase .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(137,255,46,0.16);
+      flex: 0 0 auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ui-showcase .shot { filter: none; transform: none; }
+    }
+
     .mock-fallback {
       position: absolute;
       inset: 10px;
@@ -1226,6 +1307,18 @@
           preload="auto"
         ></video>
 
+        <div class="ui-showcase" id="uiShowcase" aria-label="Momentro product showcase">
+          <div class="stage">
+            <div class="frame">
+              <div class="shot" id="shot1"></div>
+              <div class="shot" id="shot2"></div>
+              <div class="shot" id="shot3"></div>
+              <div class="shot" id="shot4"></div>
+            </div>
+            <div class="caption" id="uiCaption"><span class="dot" aria-hidden="true"></span><span>Preparing your film…</span></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1357,5 +1450,62 @@
       <a href="mailto:hello@momentro.me">Need help? Contact us</a>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      const showcase = document.getElementById("uiShowcase");
+      if (!showcase) return;
+
+      const shots = [
+        { el: document.getElementById("shot1"), src: "assets/ui/scene-1-upload.png", caption: "Upload files" , x: -14, y: 8, s: 1.20, blur: 0 },
+        { el: document.getElementById("shot2"), src: "assets/ui/scene-2-analyze.png", caption: "Moments get organized", x: 10, y: -6, s: 1.18, blur: 0 },
+        { el: document.getElementById("shot3"), src: "assets/ui/scene-3-timeline.png", caption: "Timeline builds itself", x: -6, y: -10, s: 1.22, blur: 0 },
+        { el: document.getElementById("shot4"), src: "assets/ui/scene-4-export.png", caption: "Export your film", x: 8, y: 10, s: 1.16, blur: 0 },
+      ];
+
+      const captionEl = document.getElementById("uiCaption");
+      const captionText = captionEl ? captionEl.querySelector("span:last-child") : null;
+
+      // Only enable if the UI assets exist
+      fetch(shots[0].src, { method: "HEAD" }).then((r) => {
+        if (!r.ok) return;
+
+        const video = document.querySelector(".mock-video");
+        if (video) video.style.display = "none";
+        showcase.style.display = "block";
+
+        shots.forEach((s) => {
+          s.el.style.backgroundImage = `url(${s.src})`;
+          s.el.style.setProperty("--x", `${s.x}px`);
+          s.el.style.setProperty("--y", `${s.y}px`);
+          s.el.style.setProperty("--s", `${s.s}`);
+          s.el.style.setProperty("--blur", `${s.blur}px`);
+        });
+
+        let i = 0;
+        function show(idx) {
+          shots.forEach((s, n) => {
+            s.el.style.transition = "opacity 700ms ease, transform 1100ms cubic-bezier(.2,.8,.2,1), filter 900ms ease";
+            if (n === idx) {
+              s.el.style.opacity = "1";
+              s.el.style.filter = "blur(0px) saturate(1.06) contrast(1.05)";
+              s.el.style.transform = `translate(${s.x}px, ${s.y}px) scale(${s.s})`;
+            } else {
+              s.el.style.opacity = "0";
+              s.el.style.filter = "blur(10px) saturate(1.02) contrast(1.02)";
+              s.el.style.transform = `translate(${s.x * 0.6}px, ${s.y * 0.6}px) scale(${Math.max(1.08, s.s - 0.06)})`;
+            }
+          });
+          if (captionText) captionText.textContent = shots[idx].caption;
+        }
+
+        show(0);
+        setInterval(() => {
+          i = (i + 1) % shots.length;
+          show(i);
+        }, 2400);
+      }).catch(() => {});
+    })();
+  </script>
 </body>
 </html>
