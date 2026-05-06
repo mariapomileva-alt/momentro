@@ -818,11 +818,35 @@
       background: linear-gradient(140deg, #f8fcff 0%, #e9f5ff 100%);
       position: relative;
       overflow: hidden;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 10px 10px 8px;
+      min-height: 148px;
+    }
+
+    .add-flow {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 2px 0 4px;
+    }
+
+    .add-flow svg {
+      width: 100%;
+      max-width: 210px;
+      height: auto;
+      display: block;
     }
 
     .dropzone {
       width: 100%;
-      height: 100%;
+      height: auto;
+      flex: 0 0 auto;
+      min-height: 56px;
       border-radius: 12px;
       border: 1px dashed rgba(40, 82, 128, 0.22);
       background: rgba(255, 255, 255, 0.55);
@@ -840,32 +864,6 @@
       font-size: 11px;
       color: #6b7d94;
       font-weight: 800;
-    }
-
-    .step-add .step-visual::before,
-    .step-add .step-visual::after {
-      content: "";
-      position: absolute;
-      width: 34px;
-      height: 22px;
-      border-radius: 6px;
-      background: #d8e9ff;
-      top: 22px;
-      left: 18px;
-      animation: filesSlide 2.2s ease-in-out infinite;
-    }
-
-    .step-add .step-visual::after {
-      top: 50px;
-      left: 42px;
-      animation-delay: 0.45s;
-      background: #c7dcff;
-    }
-
-    @keyframes filesSlide {
-      0% { transform: translateX(0); opacity: 0.75; }
-      50% { transform: translateX(14px); opacity: 1; }
-      100% { transform: translateX(0); opacity: 0.75; }
     }
 
     .step-final {
@@ -1259,6 +1257,25 @@
           <h3>Add your clips</h3>
           <p>Drop everything in.</p>
           <div class="step-visual" aria-hidden="true">
+            <div class="add-flow">
+              <svg viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g stroke-linecap="round" stroke-linejoin="round">
+                  <g opacity="0.92">
+                    <path fill="#d8e9ff" stroke="#9bb3d4" stroke-width="1.1" d="M14 18h20l3.5 4h15.5a3.5 3.5 0 013.5 3.5v11a3.5 3.5 0 01-3.5 3.5H17.5A3.5 3.5 0 0114 36.5V21.5A3.5 3.5 0 0117.5 18z" />
+                    <path fill="#e8f2ff" stroke="#7c9ab8" stroke-width="1.1" d="M32 14h20l3.5 4h15.5a3.5 3.5 0 013.5 3.5v11a3.5 3.5 0 01-3.5 3.5H35.5A3.5 3.5 0 0132 32.5V17.5A3.5 3.5 0 0135.5 14z" />
+                    <path fill="#f6f9ff" stroke="#5a7a9a" stroke-width="1.1" d="M50 10h20l3.5 4h15.5a3.5 3.5 0 013.5 3.5v11a3.5 3.5 0 01-3.5 3.5H53.5A3.5 3.5 0 0150 28.5V13.5A3.5 3.5 0 0153.5 10z" />
+                  </g>
+                  <path d="M102 26h46" stroke="#89ff2e" stroke-width="2.2" />
+                  <path d="M144 21l7 5-7 5" fill="none" stroke="#89ff2e" stroke-width="2.2" />
+                  <path d="M162 14v24" stroke="#142b49" stroke-width="1.35" stroke-dasharray="3.5 4" opacity="0.28" />
+                  <path d="M157 32l5 6 5-6" fill="none" stroke="#142b49" stroke-width="1.35" opacity="0.32" />
+                  <rect x="176" y="12" width="38" height="28" rx="8" fill="rgba(16,35,61,0.05)" stroke="rgba(16,35,61,0.11)" stroke-width="1" />
+                  <path d="M188 20h14" stroke="rgba(16,35,61,0.2)" stroke-width="1.2" />
+                  <path d="M188 25h10" stroke="rgba(16,35,61,0.14)" stroke-width="1.2" />
+                  <path d="M188 30h12" stroke="rgba(16,35,61,0.14)" stroke-width="1.2" />
+                </g>
+              </svg>
+            </div>
             <div class="dropzone">
               <div>Drag &amp; drop</div>
               <div class="hint">folders + files</div>
