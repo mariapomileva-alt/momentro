@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Momentro — Purchase</title>
+  <title>Momentro — Start Free</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
@@ -16,6 +16,7 @@
       --panel:#ffffff;
       --line:#dbe8cf;
       --green:#89ff2e;
+      --green-soft:#d8ffc0;
       --muted:#5a677f;
     }
     *{box-sizing:border-box}
@@ -25,8 +26,8 @@
       color:var(--ink);
       background:radial-gradient(circle at 12% 0%, #ffffff 0%, var(--bg) 46%);
     }
-    .shell{max-width:980px;margin:0 auto;padding:24px 20px 80px}
-    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .shell{max-width:1160px;margin:0 auto;padding:24px 20px 86px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
     .brand{display:inline-flex;align-items:center;gap:12px;font-size:28px;font-weight:800;color:var(--ink);text-decoration:none}
     .brand-mark{width:42px;height:42px;border-radius:13px;background:var(--navy);color:var(--green);display:grid;place-items:center;font-size:22px;line-height:1}
     .btn{
@@ -42,6 +43,7 @@
       justify-content:center;
       gap:8px;
       cursor:pointer;
+      white-space:nowrap;
     }
     .btn-light{border-color:#abc58f;color:#20402f;background:transparent}
     .btn-primary{background:var(--navy);color:#f6fff1}
@@ -55,90 +57,360 @@
     }
     .hero{
       background:linear-gradient(130deg,var(--navy) 5%, var(--navy-2) 100%);
-      border-radius:26px;
-      padding:28px;
+      border-radius:28px;
+      padding:42px;
       color:#f5ffef;
-      box-shadow:0 26px 56px rgba(16,35,61,.22);
-      margin-bottom:18px;
-    }
-    .hero h1{margin:0 0 10px;font-size:44px;line-height:.95;letter-spacing:.2px}
-    .hero p{margin:0;color:#dbe6f7;font-size:15px;max-width:720px;font-weight:650}
-    .grid{
+      box-shadow:0 28px 60px rgba(16,35,61,.24);
       display:grid;
       grid-template-columns:1.05fr .95fr;
-      gap:14px;
-      margin-top:14px;
-      align-items:start;
+      gap:22px;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+      margin-bottom:22px;
     }
-    .card{
-      background:var(--panel);
-      border:1px solid var(--line);
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(137,255,46,0.18) 0%, rgba(137,255,46,0) 46%),
+        radial-gradient(circle at 80% 60%, rgba(140,186,255,0.14) 0%, rgba(140,186,255,0) 44%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero > *{position:relative;z-index:1}
+    .hero h1{margin:0 0 14px;font-size:58px;line-height:.95;letter-spacing:.2px;max-width:560px}
+    .hero p{margin:0 0 16px;color:#dbe6f7;font-size:17px;max-width:560px;font-weight:650}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .hero-cta .btn{padding:12px 18px;font-size:14px;border-radius:14px}
+    .hero-trust{margin-top:10px;color:#b9d4b3;font-size:12px;font-weight:850;letter-spacing:.2px}
+    .microline{margin-top:12px;color:#d2e5fb;font-size:13px;font-weight:750;letter-spacing:.15px}
+    .microline em{font-style:normal;color:#eaffd1;font-weight:900}
+
+    .preview{
+      background:linear-gradient(165deg,#1a355a 0%, #132746 100%);
+      border:1px solid #3d5d89;
+      border-radius:18px;
+      padding:10px;
+      aspect-ratio:16 / 10;
+      box-shadow:0 18px 36px rgba(6,12,25,.35);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .preview::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:12px;
+      border:1px solid rgba(191,219,255,0.15);
+      pointer-events:none;
+      z-index:2;
+    }
+    .preview-media{
+      width:100%;
+      height:100%;
+      border-radius:12px;
+      object-fit:cover;
+      background:#0f1f37;
+    }
+    .preview-badge{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      z-index:3;
+      background:rgba(15,26,47,.55);
+      color:#f4ffef;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:7px 11px;
+      font-size:11px;
+      font-weight:850;
+      letter-spacing:.2px;
+      backdrop-filter:blur(6px);
+    }
+
+    .section{
+      margin-top:18px;
+      background:rgba(255,255,255,0.72);
+      border:1px solid #e3edd7;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 14px 30px rgba(15,34,62,0.06);
+    }
+    .section h2{margin:0 0 10px;font-size:34px;line-height:.95}
+    .section p{margin:0 0 14px;color:var(--muted);font-size:14px;font-weight:650;max-width:860px}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:12px;
+    }
+    .step{
+      background:#ffffff;
+      border:1px solid #e0ecd3;
       border-radius:20px;
       padding:18px;
-      box-shadow:0 16px 34px rgba(15,34,62,.06);
-    }
-    .card h2{margin:0 0 10px;font-size:24px;line-height:1.05}
-    .small{color:var(--muted);font-size:13px;font-weight:750;line-height:1.45}
-    .what{
-      display:grid;
+      box-shadow:0 12px 28px rgba(15,34,62,0.06);
+      min-height:184px;
+      display:flex;
+      flex-direction:column;
       gap:10px;
-      margin-top:10px;
     }
-    .row{
+    .step .kicker{font-size:11px;font-weight:900;letter-spacing:.18px;color:rgba(16,35,61,.55);text-transform:uppercase}
+    .step h3{margin:0;font-size:22px;line-height:1}
+    .step .small{margin:0;color:#5a677f;font-size:13px;font-weight:700;line-height:1.35}
+    .step-visual{
+      margin-top:auto;
+      border-radius:14px;
+      min-height:92px;
+      border:1px solid #dfe8f5;
+      background:linear-gradient(140deg,#f8fcff 0%, #e7f2ff 100%);
+      overflow:hidden;
+      position:relative;
+    }
+    .step-visual.files::before,
+    .step-visual.files::after{
+      content:"";
+      position:absolute;
+      width:36px;height:24px;border-radius:7px;
+      background:#d8e9ff;
+      top:18px;left:16px;
+      animation:filesSlide 2.2s ease-in-out infinite;
+    }
+    .step-visual.files::after{
+      top:46px;left:40px;
+      animation-delay:.45s;
+      background:#c7dcff;
+    }
+    @keyframes filesSlide{
+      0%{transform:translateX(0);opacity:.75}
+      50%{transform:translateX(14px);opacity:1}
+      100%{transform:translateX(0);opacity:.75}
+    }
+    .step-visual.film{
+      background:#0f1f37;
+      border-color:#b7db98;
+    }
+    .step-visual.film img{
+      width:100%;height:100%;
+      object-fit:cover;display:block;
+      filter:saturate(.98) contrast(1.02);
+      transform:scale(1);
+      transition:transform 220ms ease;
+    }
+    .step:hover .step-visual.film img{transform:scale(1.03)}
+    .step-visual.film::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.22) 100%);
+      pointer-events:none;
+    }
+
+    .reassure{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    .chip{
+      background:linear-gradient(150deg,#ffffff 0%, #f6fbf0 100%);
+      border:1px solid #e2efda;
+      border-radius:16px;
+      padding:12px;
       display:flex;
       gap:10px;
       align-items:flex-start;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid #e2efda;
-      background:linear-gradient(150deg,#ffffff 0%, #f6fbf0 100%);
+      min-height:64px;
     }
-    .dot{
-      width:22px;height:22px;border-radius:10px;
-      background:var(--navy);color:var(--green);
-      display:grid;place-items:center;flex:0 0 auto;
-      box-shadow:0 10px 18px rgba(16,35,61,.14);
-      font-weight:900;font-size:12px;
+    .chip .ico{
+      width:34px;height:34px;border-radius:14px;
+      background:#10233d;
+      display:grid;place-items:center;
+      flex:0 0 auto;
+      box-shadow:0 10px 18px rgba(16,35,61,0.16);
     }
-    .row b{display:block;font-size:13px;letter-spacing:.15px}
-    .row span{display:block;margin-top:2px;color:var(--muted);font-size:13px;font-weight:700}
-    .price{
-      padding:14px;
-      border-radius:18px;
-      border:1px solid #cde8b2;
+    .chip .ico svg{width:18px;height:18px}
+    .chip b{display:block;font-size:13px;letter-spacing:.12px}
+    .chip span{display:block;margin-top:2px;color:#5a677f;font-size:12px;font-weight:750;line-height:1.3}
+
+    .pricing{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:12px;
+    }
+    .plan{
+      background:#ffffff;
+      border:1px solid #e0ecd3;
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 12px 28px rgba(15,34,62,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height:240px;
+    }
+    .plan.pro{
+      border-color:#cde8b2;
       background:linear-gradient(145deg,#f2ffe8 0%, #ecf9ff 100%);
-      box-shadow:0 18px 44px rgba(137,255,46,.12);
+      box-shadow:0 20px 44px rgba(137,255,46,0.14);
     }
-    .price-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
-    .sku{font-weight:900;letter-spacing:.2px;color:#142b49}
-    .amount{font-weight:900;font-size:34px;line-height:1;color:#142b49}
-    .amount small{font-size:14px;color:#607289;font-weight:850}
-    .pill{
+    .tag{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      margin-top:10px;
       border-radius:999px;
       padding:6px 10px;
       font-size:12px;
-      font-weight:850;
+      font-weight:900;
       letter-spacing:.2px;
       border:1px solid #dfe8f5;
       background:#ffffff;
       color:#2b3e5a;
+      width:fit-content;
     }
-    .pay-actions{display:grid;gap:10px;margin-top:12px}
-    .pay-actions .btn{width:100%}
-    .fineprint{margin-top:10px;color:#607289;font-size:12px;font-weight:800;letter-spacing:.15px;line-height:1.35}
-    .faq{margin-top:14px;display:grid;gap:10px}
-    .faq .q{border:1px solid var(--line);border-radius:16px;background:#fbfef8;padding:12px}
-    .faq .q b{display:block;margin-bottom:6px}
+    .priceRow{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .amount{
+      font-weight:950;
+      font-size:34px;
+      line-height:1;
+      color:#142b49;
+    }
+    .amount small{
+      font-size:13px;
+      color:#607289;
+      font-weight:900;
+    }
+    .bullets{margin:0;padding-left:16px;color:#2b3e5a;font-size:13px;font-weight:800;line-height:1.55}
+    .plan .cta{margin-top:auto;display:grid;gap:10px}
+    .fineprint{color:#607289;font-size:12px;font-weight:800;letter-spacing:.12px;line-height:1.35}
+
+    .ba{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .ba-card{
+      background:#ffffff;
+      border:1px solid #dfe8f5;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      min-height:210px;
+    }
+    .ba-label{
+      position:absolute;
+      top:10px;left:10px;
+      z-index:2;
+      background:rgba(15,26,47,.55);
+      color:#f4ffef;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.2px;
+      backdrop-filter:blur(6px);
+    }
+    .ba-before{
+      height:100%;
+      padding:14px;
+      background:linear-gradient(145deg,#f8fafc 0%, #eef5ff 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .roll{
+      position:absolute;
+      top:12px;
+      right:12px;
+      z-index:2;
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.18px;
+      color:rgba(16,35,61,.55);
+      text-transform:uppercase;
+    }
+    .thumb{
+      position:absolute;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(16,35,61,.12);
+      box-shadow:0 14px 28px rgba(15,34,62,.10);
+      background:rgba(16,35,61,.10);
+    }
+    .thumb img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.96) contrast(1.02)}
+    .thumb::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.02) 0%, rgba(0,0,0,.22) 100%);
+      pointer-events:none;
+    }
+    .meta{
+      position:absolute;
+      left:8px;right:8px;bottom:8px;
+      font-size:10px;
+      color:rgba(255,255,255,.92);
+      font-weight:900;
+      letter-spacing:.15px;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      text-shadow:0 1px 10px rgba(0,0,0,.35);
+      z-index:2;
+    }
+    .t1{left:14px;top:26px;width:132px;height:92px;transform:rotate(-2deg)}
+    .t2{left:118px;top:54px;width:96px;height:132px;transform:rotate(1.5deg)}
+    .t3{left:236px;top:30px;width:146px;height:98px;transform:rotate(2.2deg)}
+    .t4{left:22px;top:122px;width:110px;height:140px;transform:rotate(1.2deg)}
+    .t5{left:158px;top:174px;width:154px;height:104px;transform:rotate(-1.6deg)}
+    .t6{left:326px;top:138px;width:108px;height:148px;transform:rotate(2.6deg);opacity:.92}
+    .noise{
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(16,35,61,0.06) 0%, rgba(16,35,61,0) 40%),
+        radial-gradient(circle at 80% 70%, rgba(16,35,61,0.05) 0%, rgba(16,35,61,0) 45%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 6px);
+      opacity:.7;
+      pointer-events:none;
+      mix-blend-mode:overlay;
+    }
+    .ba-after img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      filter:saturate(.98) contrast(1.02);
+      transform:scale(1);
+      transition:transform 220ms ease;
+    }
+    .ba-after:hover img{transform:scale(1.03)}
+    .ba-after::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.16) 100%);
+      pointer-events:none;
+    }
+
     footer{margin-top:16px;color:#698070;font-size:13px}
     footer a{color:#2b5c49;font-weight:900;text-decoration:none;border-bottom:1px solid rgba(43,92,73,.25);padding-bottom:1px}
     footer a:hover{border-bottom-color:rgba(43,92,73,.55)}
     @media (max-width: 980px){
-      .grid{grid-template-columns:1fr}
-      .hero h1{font-size:38px}
+      .hero{grid-template-columns:1fr;padding:28px}
+      .hero h1{font-size:44px}
+      .steps{grid-template-columns:1fr}
+      .reassure{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .ba{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -154,190 +426,224 @@
       </nav>
     </header>
 
-    <section class="hero" aria-label="Purchase Momentro">
-      <h1>Start with one free film.</h1>
-      <p>First film is always free. After that, choose per film or a year plan.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
-        <div class="pill" id="freePill">First film: free</div>
-        <div class="pill" id="platformPill" aria-live="polite">Windows app available now</div>
+    <section class="hero" aria-label="Buy hero">
+      <div>
+        <h1>Turn thousands of videos into one beautiful memory.</h1>
+        <p>
+          Upload your travel, family, and life videos. Momentro organizes your moments and transforms them into a cinematic film you’ll actually watch.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-pay" href="#pricing" id="heroStartBtn">Start free</a>
+          <a class="btn btn-light" href="#pricing" id="heroDownloadBtn">Download for Windows</a>
+        </div>
+        <div class="hero-trust">
+          First film free · <span id="platformText">Windows app available now</span> · Private processing
+        </div>
+        <div class="microline">Some memories deserve more than <em>storage</em>.</div>
+      </div>
+
+      <div class="preview" aria-label="Cinematic preview">
+        <video class="preview-media" src="momentro-hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <span class="preview-badge">A film you’ll replay</span>
       </div>
     </section>
 
-    <section class="grid" aria-label="Checkout details">
-      <div class="card">
-        <h2>How pricing works</h2>
-        <p class="small">Momentro turns scattered clips into one finished film you’ll actually watch — without learning editing.</p>
+    <section class="section" aria-label="3 steps">
+      <h2>Three steps. One film.</h2>
+      <p>Less mess. More story.</p>
 
-        <div class="what" role="list">
-          <div class="row" role="listitem">
-            <div class="dot">1</div>
-            <div>
-              <b>Your first film is free</b>
-              <span>No card needed for the first export.</span>
-            </div>
-          </div>
-          <div class="row" role="listitem">
-            <div class="dot">2</div>
-            <div>
-              <b>Then pick a plan</b>
-              <span>Pay per film (€9.99) or get a year (€39).</span>
-            </div>
-          </div>
-          <div class="row" role="listitem">
-            <div class="dot">3</div>
-            <div>
-              <b>Still local-first</b>
-              <span>Your files stay on your computer. No cloud upload.</span>
-            </div>
-          </div>
+      <div class="steps" role="list">
+        <div class="step" role="listitem">
+          <div class="kicker">Step 1</div>
+          <h3>Upload videos</h3>
+          <p class="small">Bring everything you have.</p>
+          <div class="step-visual files" aria-hidden="true"></div>
         </div>
-
-        <div class="faq" aria-label="Purchase FAQs">
-          <div class="q">
-            <b>How do I get the download?</b>
-            <div class="small">After payment, your checkout page (or email receipt) should include the installer link.</div>
-          </div>
-          <div class="q">
-            <b>Do my files get uploaded?</b>
-            <div class="small">No. Momentro works with local files on your computer.</div>
-          </div>
-          <div class="q">
-            <b>Refunds?</b>
-            <div class="small">Add your refund policy here (for example: 30-day refund).</div>
+        <div class="step" role="listitem">
+          <div class="kicker">Step 2</div>
+          <h3>Moments get organized</h3>
+          <p class="small">Your chaos becomes a story.</p>
+          <div class="step-visual" aria-hidden="true"></div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="kicker">Step 3</div>
+          <h3>Get a beautiful film</h3>
+          <p class="small">A memory worth replaying.</p>
+          <div class="step-visual film">
+            <img src="final-result-family.png" alt="Warm family film preview" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
+    </section>
 
-      <aside class="card" aria-label="Pay">
-        <div class="price">
-          <div class="price-top">
-            <div class="sku" id="skuName">Choose your plan</div>
-            <div class="amount">
-              <span id="priceAmount">€9.99</span>
-              <small id="priceNote">per film</small>
-            </div>
+    <section class="section" aria-label="Reassurance">
+      <h2>Upload everything you have.</h2>
+      <p>Phones, cameras, drones, old archives, mixed formats — it all belongs here.</p>
+
+      <div class="reassure" role="list">
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 7h10v10H7V7Z" stroke="#89FF2E" stroke-width="2"/>
+              <path d="M4 10V6a2 2 0 0 1 2-2h4" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 14v4a2 2 0 0 1-2 2h-4" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </div>
-          <div class="pill">First film free · Secure checkout</div>
-          <div id="planToggle" style="margin-top:10px;display:grid;gap:8px">
-            <button class="btn btn-light" type="button" data-plan="single" aria-pressed="true" style="justify-content:space-between">
-              <span><b>1 film</b> <span style="opacity:.7;font-weight:800">then pay as you go</span></span>
-              <span style="font-weight:900">€9.99</span>
-            </button>
-            <button class="btn btn-light" type="button" data-plan="year" aria-pressed="false" style="justify-content:space-between">
-              <span><b>Year</b> <span style="opacity:.7;font-weight:800">best value</span></span>
-              <span style="font-weight:900">€39</span>
-            </button>
+          <div><b>All formats</b><span>Any device. Mixed files.</span></div>
+        </div>
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3c-4 2.6-7 2.6-7 2.6V12c0 5.6 3.7 9.7 7 11 3.3-1.3 7-5.4 7-11V5.6S16 5.6 12 3Z" stroke="#89FF2E" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8.8 12.4l2.1 2.1 4.4-5.1" stroke="#89FF2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="pay-actions">
-            <a class="btn btn-pay" id="checkoutBtn" href="#" rel="noopener">Continue to checkout</a>
-            <a class="btn btn-primary" href="index.html#how-it-works">See how it works</a>
+          <div><b>Private processing</b><span>Your files stay yours.</span></div>
+        </div>
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 12h10" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 7v10" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z" stroke="#89FF2E" stroke-width="2"/>
+            </svg>
           </div>
-          <div class="fineprint" id="fineprint">
-            Tip: connect your payment URLs in buy.html (CHECKOUT.single / CHECKOUT.year).
+          <div><b>No skills needed</b><span>Upload → watch.</span></div>
+        </div>
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 17h16" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6.5 14.5h11" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 12l4-4 4 4" stroke="#89FF2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div><b>Large archives</b><span>From a few clips to years.</span></div>
+        </div>
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 14c2.5 2.8 6.5 2.8 9 0" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 10c.7-3.8 4.2-6.5 8.1-6 3.1.4 5.6 2.6 6.3 5.6" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div><b>Fast organization</b><span>Less mess. More story.</span></div>
+        </div>
+        <div class="chip" role="listitem">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 17V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 19h8" stroke="#89FF2E" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div><b>Desktop app</b><span>Windows now. Mac soon.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" aria-label="Pricing">
+      <h2>Start free. Upgrade when you love it.</h2>
+      <p>First film is always free. Then choose what feels right.</p>
+
+      <div class="pricing" role="list">
+        <div class="plan" role="listitem">
+          <div class="tag">FREE</div>
+          <div class="priceRow">
+            <div class="amount">€0 <small>first film</small></div>
+          </div>
+          <ul class="bullets">
+            <li>Create your first film free</li>
+            <li>Upload videos from any device</li>
+            <li>Private processing</li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-pay" href="#" id="startFreeBtn">Create your first film</a>
+            <div class="fineprint">Beautiful moments deserve to stay.</div>
           </div>
         </div>
 
-        <div style="margin-top:12px" class="small">
-          <b style="color:#142b49">Need help?</b><br />
-          Email us at <a href="mailto:hello@momentro.me">hello@momentro.me</a>
+        <div class="plan pro" role="listitem">
+          <div class="tag">PRO</div>
+          <div class="priceRow">
+            <div class="amount">€39 <small>/ year</small></div>
+            <div class="fineprint">or €9.99 per film</div>
+          </div>
+          <ul class="bullets">
+            <li>Unlimited films</li>
+            <li>Unlimited uploads</li>
+            <li>Premium export quality</li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-primary" href="#" id="upgradeYearBtn">Go PRO (Year)</a>
+            <a class="btn btn-light" href="#" id="upgradeSingleBtn">Pay per film (€9.99)</a>
+            <div class="fineprint">Relive what matters — anytime.</div>
+          </div>
         </div>
-      </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Before after">
+      <h2>Messy archive → cinematic memory</h2>
+      <p>Your life is more than random clips.</p>
+
+      <div class="ba" aria-label="Before and after">
+        <div class="ba-card">
+          <span class="ba-label">Messy archive</span>
+          <div class="ba-before">
+            <div class="roll">Camera Roll</div>
+            <div class="thumb t1"><img src="before-cafe.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2841.MOV · 0:13</div></div>
+            <div class="thumb t2"><img src="before-mountain-road.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2842.MOV · 0:08</div></div>
+            <div class="thumb t3"><img src="before-europe-street.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2843.MOV · 0:21</div></div>
+            <div class="thumb t4"><img src="before-europe-street.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2843 (1).MOV</div></div>
+            <div class="thumb t5"><img src="before-cafe.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2844.MOV · 0:05</div></div>
+            <div class="thumb t6"><img src="before-mountain-road.png" alt="" loading="lazy" decoding="async" /><div class="meta">IMG_2845.MOV · 0:09</div></div>
+            <div class="noise"></div>
+          </div>
+        </div>
+        <div class="ba-card ba-after">
+          <span class="ba-label">Cinematic film</span>
+          <img src="final-result-family.png" alt="Finished film preview" loading="lazy" decoding="async" />
+        </div>
+      </div>
     </section>
 
     <footer>
       Momentro — smart editing, one beautiful story.
+      <br />
+      <a href="mailto:hello@momentro.me">Need help? Contact us</a>
     </footer>
   </div>
 
   <script>
     const CHECKOUT = {
+      free: "#",
       single: "#",
       year: "#"
     };
 
     const params = new URLSearchParams(location.search);
     const platform = (params.get("platform") || "windows").toLowerCase();
-    const initialPlan = (params.get("plan") || "single").toLowerCase();
 
-    const state = {
-      windows: {
-        pill: "Windows app available now",
-        skuPrefix: "Momentro for Windows",
-        disabled: false
-      },
-      mac: {
-        pill: "Mac app coming soon",
-        skuPrefix: "Momentro for Mac",
-        disabled: true
-      }
-    }[platform] || state.windows;
+    const platformText = document.getElementById("platformText");
+    platformText.textContent = platform === "mac" ? "Mac coming soon" : "Windows app available now";
 
-    document.getElementById("platformPill").textContent = state.pill;
-    const priceAmount = document.getElementById("priceAmount");
-    const priceNote = document.getElementById("priceNote");
-    const skuName = document.getElementById("skuName");
-    const btn = document.getElementById("checkoutBtn");
-    const toggle = document.getElementById("planToggle");
-
-    const plans = {
-      single: {
-        label: "1 film",
-        price: "€9.99",
-        note: "per film",
-        checkout: CHECKOUT.single
-      },
-      year: {
-        label: "Year",
-        price: "€39",
-        note: "per year",
-        checkout: CHECKOUT.year
-      }
-    };
-
-    function setPlan(planKey) {
-      const plan = plans[planKey] || plans.single;
-      skuName.textContent = `${state.skuPrefix} · ${plan.label}`;
-      priceAmount.textContent = plan.price;
-      priceNote.textContent = plan.note;
-      btn.href = plan.checkout || "#";
-
-      const buttons = toggle.querySelectorAll("button[data-plan]");
-      buttons.forEach((b) => {
-        const on = b.getAttribute("data-plan") === planKey;
-        b.setAttribute("aria-pressed", on ? "true" : "false");
-        b.style.borderColor = on ? "#b7df95" : "#abc58f";
-        b.style.background = on ? "rgba(137,255,46,0.10)" : "transparent";
+    function guardLink(a, key, msg) {
+      if (!a) return;
+      a.addEventListener("click", (e) => {
+        const href = CHECKOUT[key];
+        if (!href || href === "#") {
+          e.preventDefault();
+          alert(msg);
+          return;
+        }
+        a.href = href;
       });
-
-      if (state.disabled) {
-        btn.textContent = "Mac coming soon";
-        btn.style.opacity = "0.75";
-        btn.style.pointerEvents = "none";
-      } else {
-        btn.textContent = "Continue to checkout";
-        btn.style.opacity = "1";
-        btn.style.pointerEvents = "auto";
-      }
     }
 
-    toggle.addEventListener("click", (e) => {
-      const target = e.target.closest("button[data-plan]");
-      if (!target) return;
-      setPlan(target.getAttribute("data-plan"));
-    });
-
-    btn.addEventListener("click", (e) => {
-      if (state.disabled) {
-        e.preventDefault();
-        return;
-      }
-      if (!btn.href || btn.href.endsWith("#")) {
-        e.preventDefault();
-        alert("Checkout link isn’t connected yet. Add your payment URLs in buy.html (CHECKOUT.single / CHECKOUT.year).");
-      }
-    });
-
-    setPlan(initialPlan);
+    guardLink(document.getElementById("startFreeBtn"), "free", "Connect your Start Free flow in buy.html (CHECKOUT.free).");
+    guardLink(document.getElementById("heroStartBtn"), "free", "Connect your Start Free flow in buy.html (CHECKOUT.free).");
+    guardLink(document.getElementById("upgradeSingleBtn"), "single", "Connect your payment link in buy.html (CHECKOUT.single).");
+    guardLink(document.getElementById("upgradeYearBtn"), "year", "Connect your payment link in buy.html (CHECKOUT.year).");
   </script>
 </body>
 </html>
