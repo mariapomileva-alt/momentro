@@ -1,6 +1,3 @@
-<svg width="820" height="220" viewBox="0 0 820 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="20" y="20" width="180" height="180" rx="42" fill="#10233D"/>
-  <path d="M58 160V62H84L110 102L136 62H162V160" stroke="#89FF2E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="168" cy="52" r="14" fill="#89FF2E"/>
-  <text x="235" y="140" fill="#10233D" font-family="Mikado, Avenir Next, Inter, sans-serif" font-size="96" font-weight="700" letter-spacing="0.5">Momentro</text>
+<svg width="820" height="220" viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Momentro logo">
+  <image href="assets/logo-lockup.png" x="0" y="0" width="820" height="220" preserveAspectRatio="xMinYMid meet" />
 </svg>
