@@ -8,37 +8,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32-v2.png?v=3" />
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16-v2.png?v=3" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-v2.png?v=3" />
-  <link rel="preload" href="../assets/fonts/mikado-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    @font-face {
-      font-family: "Mikado";
-      src: url("../assets/fonts/mikado-400-normal.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Mikado";
-      src: url("../assets/fonts/mikado-500-normal.woff2") format("woff2");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Mikado";
-      src: url("../assets/fonts/mikado-700-normal.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Mikado";
-      src: url("../assets/fonts/mikado-900-normal.woff2") format("woff2");
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
     :root{
       --navy:#10233d;
       --navy-2:#0d1a2f;
@@ -53,9 +26,19 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"Mikado","Avenir Next","Inter",sans-serif;
+      font-family:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-weight:900;
+      letter-spacing:-0.02em;
       color:var(--ink);
       background:radial-gradient(circle at 12% 0%, #ffffff 0%, var(--bg) 46%);
+    }
+
+    .intro p,
+    .section p,
+    .fineprint,
+    footer {
+      font-weight:600;
+      letter-spacing:-0.01em;
     }
     .shell{max-width:980px;margin:0 auto;padding:24px 20px 86px}
     .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
