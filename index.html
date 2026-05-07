@@ -691,9 +691,9 @@
     }
 
     .step-final .step-num {
-      background: var(--green);
-      color: var(--navy);
-      box-shadow: 0 10px 20px rgba(137, 255, 46, 0.35);
+      background: var(--navy);
+      color: var(--green);
+      box-shadow: 0 10px 20px rgba(15, 34, 62, 0.22);
     }
 
     .step-card h3 {
@@ -1054,9 +1054,10 @@
 
     .magic-line {
       position: relative;
-      max-width: 720px;
+      width: fit-content;
+      max-width: 100%;
       margin: 0 auto 14px;
-      padding: 14px 18px 14px 16px;
+      padding: 12px 18px 12px 16px;
       background: rgba(255, 255, 255, 0.78);
       border: 1px solid #e2efda;
       border-left: 4px solid var(--green);
@@ -1065,7 +1066,7 @@
       font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.1px;
-      text-align: left;
+      text-align: center;
       box-shadow: 0 10px 22px rgba(15, 34, 62, 0.06);
     }
 
@@ -1148,7 +1149,15 @@
       border-radius: 14px;
       background: var(--navy);
       color: #f4ffef;
-      border-color: var(--navy);
+      border: 1px solid var(--navy);
+      box-shadow: 0 10px 22px rgba(15, 34, 62, 0.18);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .compare-cta .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--green);
+      box-shadow: 0 14px 28px rgba(137, 255, 46, 0.25);
     }
 
     .testimonials {
@@ -1416,7 +1425,7 @@
         <article class="step-card step-download">
           <span class="step-num" aria-hidden="true">01</span>
           <h3>Download</h3>
-          <p>Install in seconds.</p>
+          <p>One click. Done.</p>
           <div class="step-visual" aria-hidden="true">
             <div class="download-window">
               <div class="titlebar">
@@ -1438,7 +1447,7 @@
         <article class="step-card step-add">
           <span class="step-num" aria-hidden="true">02</span>
           <h3>Add your clips</h3>
-          <p>Drop your clips.</p>
+          <p>Drag & drop.</p>
           <div class="step-visual" aria-hidden="true">
             <div class="add-flow">
               <svg viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1470,7 +1479,7 @@
         <article class="step-card step-final">
           <span class="step-num" aria-hidden="true">03</span>
           <h3>Get your film</h3>
-          <p>Watch your story.</p>
+          <p>Watch and share.</p>
           <div class="step-visual preview">
             <img src="final-result-family.png" alt="Warm family moment preview" loading="lazy" decoding="async" />
             <span class="preview-play" aria-hidden="true"></span>
