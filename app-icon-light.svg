@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Momentro app icon (light)">
+  <rect x="0" y="0" width="512" height="512" rx="112" ry="112" fill="#FFFFFF" stroke="#10233D" stroke-width="2"/>
+  <path
+    d="M115 397V115L256 296L397 115V397"
+    fill="none"
+    stroke="#10233D"
+    stroke-width="70"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

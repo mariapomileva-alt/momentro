@@ -1,7 +1,11 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="28" y="28" width="456" height="456" rx="112" fill="#10233D"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Momentro app icon">
+  <rect x="0" y="0" width="512" height="512" rx="112" ry="112" fill="#10233D"/>
   <path
-    d="M158 366V146H230L256 222L282 146H354V366H304V236L256 328L208 236V366H158Z"
-    fill="#89FF2E"
+    d="M115 397V115L256 296L397 115V397"
+    fill="none"
+    stroke="#89FF2E"
+    stroke-width="70"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   />
 </svg>
