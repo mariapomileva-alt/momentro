@@ -71,10 +71,13 @@
       color: var(--green);
       display: grid;
       place-items: center;
-      font-size: 32px;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      padding-bottom: 2px;
+      line-height: 0;
+    }
+
+    .brand-mark .mark-svg {
+      width: 90%;
+      height: 90%;
+      display: block;
     }
 
     .top-actions {
@@ -730,13 +733,15 @@
       color: #89ff2e;
       display: grid;
       place-items: center;
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      padding-bottom: 2px;
-      font-weight: 900;
+      line-height: 0;
       flex: 0 0 auto;
       box-shadow: 0 10px 20px rgba(16, 35, 61, 0.22);
+    }
+
+    .install-icon .mark-svg {
+      width: 88%;
+      height: 88%;
+      display: block;
     }
 
     .install-meta {
@@ -1353,8 +1358,12 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark">M</span>
+      <div class="brand" aria-label="Momentro">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M9 31V9L20 23L31 9V31" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
         <span>Momentro</span>
       </div>
       <nav class="top-actions">
@@ -1421,7 +1430,11 @@
                 <span class="dot g"></span>
               </div>
               <div class="body">
-                <div class="install-icon">M</div>
+                <div class="install-icon" aria-hidden="true">
+                  <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                    <path d="M9 31V9L20 23L31 9V31" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
                 <div class="install-meta">
                   <p class="name">Momentro</p>
                   <p class="sub">Ready to install</p>
