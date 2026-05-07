@@ -633,15 +633,17 @@
     }
 
     .compare h2, .testimonials h2, .faq h2 {
-      margin: 0 0 14px;
+      margin: 0 0 8px;
       font-size: 36px;
       line-height: 0.95;
     }
 
     .section-intro {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 15px;
+      margin: 0 0 18px;
+      color: #8a99b3;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.18px;
       max-width: 760px;
     }
 
@@ -660,10 +662,9 @@
       padding: 18px;
       box-shadow: 0 10px 24px rgba(15, 34, 62, 0.08);
       transition: transform 180ms ease, box-shadow 180ms ease;
-      min-height: 210px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .step-card:hover {
@@ -671,11 +672,36 @@
       box-shadow: 0 16px 32px rgba(15, 34, 62, 0.12);
     }
 
+    .step-num {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 16px rgba(16, 35, 61, 0.18);
+    }
+
+    .step-final .step-num {
+      background: var(--green);
+      color: var(--navy);
+      box-shadow: 0 10px 20px rgba(137, 255, 46, 0.35);
+    }
+
     .step-card h3 {
       margin: 0;
       font-size: 24px;
       line-height: 0.95;
       color: #142b49;
+      padding-right: 36px;
     }
 
     .step-card p {
@@ -688,7 +714,7 @@
     .step-visual {
       margin-top: auto;
       border-radius: 14px;
-      min-height: 96px;
+      aspect-ratio: 16 / 11;
       border: 1px solid #dfe8f5;
       background: #f7fbff;
       display: flex;
@@ -698,8 +724,8 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.2px;
-      text-transform: uppercase;
       position: relative;
+      overflow: hidden;
     }
 
     .install-ui {
@@ -770,11 +796,43 @@
       background: #0f1f37;
       position: relative;
       display: block;
-      min-height: 132px;
       opacity: 0;
       transform: translateY(2px);
       animation: previewFade 900ms ease forwards;
       animation-delay: 120ms;
+    }
+
+    .preview-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: rgba(15, 26, 47, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .preview-play::after {
+      content: "";
+      width: 0;
+      height: 0;
+      margin-left: 4px;
+      border-style: solid;
+      border-width: 9px 0 9px 14px;
+      border-color: transparent transparent transparent #f4ffef;
+    }
+
+    .step-final:hover .preview-play {
+      transform: translate(-50%, -50%) scale(1.06);
+      background: rgba(15, 26, 47, 0.6);
     }
 
     .step-visual.preview img {
@@ -812,65 +870,115 @@
 
     .step-download .step-visual {
       background: linear-gradient(140deg, #f8fcff 0%, #e7f2ff 100%);
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
     }
 
-    .step-card.step-add {
-      min-height: 248px;
+    .download-window {
+      width: 100%;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid rgba(16, 35, 61, 0.10);
+      box-shadow: 0 14px 28px rgba(15, 34, 62, 0.10);
+      overflow: hidden;
+    }
+
+    .download-window .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      background: #f0f4fb;
+      border-bottom: 1px solid rgba(16, 35, 61, 0.06);
+    }
+
+    .download-window .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(16, 35, 61, 0.22);
+    }
+
+    .download-window .dot.r { background: #ff6b6b; }
+    .download-window .dot.y { background: #f6c544; }
+    .download-window .dot.g { background: #59cd6f; }
+
+    .download-window .body {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .download-window .check {
+      margin-left: auto;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 950;
+      box-shadow: 0 8px 14px rgba(137, 255, 46, 0.35);
     }
 
     .step-add .step-visual {
       background: linear-gradient(140deg, #f8fcff 0%, #e9f5ff 100%);
-      position: relative;
-      overflow: hidden;
-      margin-top: 0;
-      flex: 1 1 auto;
-      min-height: 0;
       flex-direction: column;
       align-items: stretch;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 10px 8px;
+      gap: 10px;
+      padding: 14px;
     }
 
     .add-flow {
-      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 0;
-      padding: 2px 0 4px;
+      padding: 2px 0;
     }
 
     .add-flow svg {
       width: 100%;
-      max-width: 210px;
+      max-width: 230px;
       height: auto;
       display: block;
     }
 
     .dropzone {
       width: 100%;
-      height: auto;
-      flex: 0 0 auto;
-      min-height: 56px;
       border-radius: 12px;
       border: 1px dashed rgba(40, 82, 128, 0.22);
-      background: rgba(255, 255, 255, 0.55);
-      display: grid;
-      place-items: center;
-      padding: 10px;
-      text-transform: none;
+      background: rgba(255, 255, 255, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px;
       letter-spacing: 0;
       font-weight: 900;
       color: #1f3b5a;
-      gap: 2px;
+      flex-wrap: wrap;
     }
 
-    .dropzone .hint {
-      font-size: 11px;
-      color: #6b7d94;
-      font-weight: 800;
+    .ext-chip {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      color: #1f3b5a;
+      background: #ffffff;
+      border: 1px solid rgba(16, 35, 61, 0.10);
+      border-radius: 999px;
+      padding: 4px 8px;
+      box-shadow: 0 4px 10px rgba(15, 34, 62, 0.06);
     }
+
+    .ext-chip + .ext-chip { margin-left: 0; }
 
     .step-final {
       background: linear-gradient(145deg, #f2ffe8 0%, #ecf9ff 100%);
@@ -904,13 +1012,61 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .steps-track {
+      position: relative;
+      max-width: 760px;
+      margin: 6px auto 18px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+    }
+
+    .steps-track::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 50%;
+      height: 2px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, rgba(16,35,61,0.15) 0%, rgba(137,255,46,0.55) 100%);
+      border-radius: 999px;
+    }
+
+    .steps-track .knot {
+      position: relative;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 2px solid var(--navy);
+      box-shadow: 0 6px 12px rgba(15, 34, 62, 0.12);
+      z-index: 1;
+    }
+
+    .steps-track .knot:last-child {
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: 0 8px 18px rgba(137, 255, 46, 0.45);
+    }
+
     .magic-line {
-      text-align: center;
-      color: #607289;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      margin: 0 0 14px;
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto 14px;
+      padding: 14px 18px 14px 16px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid #e2efda;
+      border-left: 4px solid var(--green);
+      border-radius: 14px;
+      color: #142b49;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.1px;
+      text-align: left;
+      box-shadow: 0 10px 22px rgba(15, 34, 62, 0.06);
     }
 
     .compare-cta {
@@ -920,11 +1076,19 @@
     }
     .steps-trust {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 12px;
       color: #6b7d94;
       font-weight: 800;
       letter-spacing: 0.2px;
+    }
+    .steps-microtrust {
+      text-align: center;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #8a99b3;
+      font-weight: 800;
+      letter-spacing: 0.18px;
     }
 
     .privacy-mini {
@@ -1183,6 +1347,10 @@
       .social-proof-grid { grid-template-columns: 1fr; }
       .trust-block { grid-template-columns: 1fr; }
       .before-after { grid-template-columns: 1fr; }
+
+      .step-visual { aspect-ratio: 16 / 9; }
+      .steps-track { display: none; }
+      .magic-line { font-size: 13px; padding: 12px 14px; }
     }
   </style>
 </head>
@@ -1246,22 +1414,31 @@
       <p class="section-intro">No editing skills needed.</p>
       <div class="steps-grid">
         <article class="step-card step-download">
+          <span class="step-num" aria-hidden="true">01</span>
           <h3>Download</h3>
-          <p>Ready in seconds.</p>
+          <p>Install in seconds.</p>
           <div class="step-visual" aria-hidden="true">
-            <div class="install-ui">
-              <div class="install-icon">M</div>
-              <div class="install-meta">
-                <p class="name">Momentro</p>
-                <p class="sub">Installing…</p>
-                <div class="install-bar"><span></span></div>
+            <div class="download-window">
+              <div class="titlebar">
+                <span class="dot r"></span>
+                <span class="dot y"></span>
+                <span class="dot g"></span>
+              </div>
+              <div class="body">
+                <div class="install-icon">M</div>
+                <div class="install-meta">
+                  <p class="name">Momentro</p>
+                  <p class="sub">Ready to install</p>
+                </div>
+                <div class="check" aria-hidden="true">✓</div>
               </div>
             </div>
           </div>
         </article>
         <article class="step-card step-add">
+          <span class="step-num" aria-hidden="true">02</span>
           <h3>Add your clips</h3>
-          <p>Drop everything in.</p>
+          <p>Drop your clips.</p>
           <div class="step-visual" aria-hidden="true">
             <div class="add-flow">
               <svg viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1282,26 +1459,36 @@
                 </g>
               </svg>
             </div>
-            <div class="dropzone">
-              <div>Drag &amp; drop</div>
-              <div class="hint">folders + files</div>
+            <div class="dropzone" aria-hidden="true">
+              <span class="ext-chip">.MOV</span>
+              <span class="ext-chip">.MP4</span>
+              <span class="ext-chip">.HEIC</span>
+              <span class="ext-chip">.JPG</span>
             </div>
           </div>
         </article>
         <article class="step-card step-final">
+          <span class="step-num" aria-hidden="true">03</span>
           <h3>Get your film</h3>
-          <p>A story you'll actually watch.</p>
+          <p>Watch your story.</p>
           <div class="step-visual preview">
             <img src="final-result-family.png" alt="Warm family moment preview" loading="lazy" decoding="async" />
+            <span class="preview-play" aria-hidden="true"></span>
             <span class="preview-badge">Ready to watch</span>
           </div>
         </article>
+      </div>
+      <div class="steps-track" aria-hidden="true">
+        <span class="knot"></span>
+        <span class="knot"></span>
+        <span class="knot"></span>
       </div>
       <div class="magic-line">No editing. No timeline. Just a film.</div>
       <div class="compare-cta">
         <a class="btn btn-primary" href="buy/?platform=windows">Start free</a>
       </div>
       <div class="steps-trust">Works with local files. No cloud upload.</div>
+      <div class="steps-microtrust">First film free · Mac &amp; Windows</div>
       <div class="privacy-mini" aria-label="Privacy and local processing">
         <div class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
