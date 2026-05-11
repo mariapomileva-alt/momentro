@@ -270,7 +270,7 @@
             <li>Private processing</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-pay" href="#" id="startFreeBtn">Start free</a>
+            <a class="btn btn-pay" href="index.html">Start free</a>
             <div class="fineprint">No card needed for the first film.</div>
           </div>
         </div>
@@ -287,8 +287,8 @@
             <li>Premium export quality</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="#" id="upgradeYearBtn">Choose PRO — €39/year</a>
-            <a class="btn btn-light" href="#" id="upgradeSingleBtn">Pay per film</a>
+            <a class="btn btn-primary" href="https://mometro.lemonsqueezy.com/checkout/buy/c9ae9187-b8e7-4bde-8917-e66c3ab5198b" rel="noopener noreferrer">Choose PRO — €39/year</a>
+            <a class="btn btn-light" href="https://mometro.lemonsqueezy.com/checkout/buy/59d883e5-a21e-4978-aedf-6267d75ad01a" rel="noopener noreferrer">Pay per film</a>
             <div class="fineprint">Choose what fits your pace.</div>
           </div>
         </div>
@@ -321,34 +321,10 @@
   </div>
 
   <script>
-    const CHECKOUT = {
-      free: "#",
-      single: "#",
-      year: "#"
-    };
-
     const params = new URLSearchParams(location.search);
     const platform = (params.get("platform") || "windows").toLowerCase();
-
     const platformText = document.getElementById("platformText");
     platformText.textContent = platform === "mac" ? "Mac coming soon" : "Windows app available now";
-
-    function guardLink(a, key, msg) {
-      if (!a) return;
-      a.addEventListener("click", (e) => {
-        const href = CHECKOUT[key];
-        if (!href || href === "#") {
-          e.preventDefault();
-          alert(msg);
-          return;
-        }
-        a.href = href;
-      });
-    }
-
-    guardLink(document.getElementById("startFreeBtn"), "free", "Connect your Start Free flow in buy.html (CHECKOUT.free).");
-    guardLink(document.getElementById("upgradeSingleBtn"), "single", "Connect your payment link in buy.html (CHECKOUT.single).");
-    guardLink(document.getElementById("upgradeYearBtn"), "year", "Connect your payment link in buy.html (CHECKOUT.year).");
   </script>
 </body>
 </html>
