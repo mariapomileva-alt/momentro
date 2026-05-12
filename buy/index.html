@@ -221,6 +221,23 @@
     footer{margin-top:16px;color:#698070;font-size:13px}
     footer a{color:#2b5c49;font-weight:900;text-decoration:none;border-bottom:1px solid rgba(43,92,73,.25);padding-bottom:1px}
     footer a:hover{border-bottom-color:rgba(43,92,73,.55)}
+    .pay-flow{
+      margin:0 0 18px;
+      padding:18px 16px;
+      border-radius:22px;
+      border:1px solid #cde8b2;
+      background:linear-gradient(145deg,#f2ffe8 0%,#ecf9ff 100%);
+      box-shadow:0 12px 28px rgba(15,34,62,0.06);
+    }
+    .pay-flow h2{margin:0 0 6px;font-size:18px;line-height:1.15;color:#142b49}
+    .pay-flow p{margin:0 0 14px;color:var(--muted);font-size:13px;font-weight:650;max-width:720px;line-height:1.45}
+    .pay-flow-track{display:flex;align-items:stretch;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .pay-flow-step{flex:1 1 140px;min-width:120px;text-align:center;padding:10px 6px;border-radius:14px;background:rgba(255,255,255,0.7);border:1px solid #e2efda}
+    .pay-flow-num{width:32px;height:32px;margin:0 auto 8px;border-radius:12px;background:var(--navy);color:var(--green);display:grid;place-items:center;font-size:13px;font-weight:950}
+    .pay-flow-step b{display:block;font-size:12px;color:#142b49;margin-bottom:3px}
+    .pay-flow-step span{display:block;font-size:11px;color:var(--muted);font-weight:700;line-height:1.35}
+    .pay-flow-join{display:none;align-self:center;color:#9aa6bb;font-size:16px;padding:0 2px}
+    @media (min-width:700px){.pay-flow-track{flex-wrap:nowrap;align-items:center}.pay-flow-join{display:block}}
     @media (max-width: 980px){
       .pricing{grid-template-columns:1fr}
       .intro h1{font-size:38px}
@@ -240,50 +257,74 @@
     </header>
 
     <section class="intro" aria-label="Intro">
-      <h1>Start free. Upgrade when you love it.</h1>
-      <p>Create your first film for free. Choose the plan that works for you.</p>
+      <h1>Start free. Pay inside the app.</h1>
+      <p>Download Momentro, export your first film free with a watermark, then unlock clean exports from the app — €9.99 for this project or €39/year for unlimited.</p>
       <div class="subrow">
-        <span class="pill">First film free</span>
+        <span class="pill">Pay in app</span>
         <span id="platformText">Windows app available now</span>
+      </div>
+    </section>
+
+    <section class="pay-flow" aria-label="How paying works">
+      <h2>Download → create → upgrade in app</h2>
+      <p>Checkout never runs on this page — the app opens a secure browser window with your account and project already attached.</p>
+      <div class="pay-flow-track" role="list">
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">1</div>
+          <b>Download</b>
+          <span>Install on Windows. No card.</span>
+        </div>
+        <span class="pay-flow-join" aria-hidden="true">→</span>
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">2</div>
+          <b>Export free</b>
+          <span>Full film, small watermark.</span>
+        </div>
+        <span class="pay-flow-join" aria-hidden="true">→</span>
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">3</div>
+          <b>Pay in app</b>
+          <span>Remove watermark when you’re ready.</span>
+        </div>
       </div>
     </section>
 
     <section class="section" id="pricing" aria-label="Pricing">
       <h2>Pricing</h2>
-      <p>Keep it simple: start free, then pay per film or go PRO.</p>
+      <p>Same numbers on the site and in the app — you always finish purchase from the desktop app.</p>
 
       <div class="pricing" role="list">
         <div class="plan" role="listitem">
           <div class="tag">FREE</div>
           <div class="priceRow">
-            <div class="amount">€0 <small>first film</small></div>
+            <div class="amount">€0 <small>first export</small></div>
           </div>
           <ul class="bullets">
-            <li>Create your first film free</li>
-            <li>Upload videos from any device</li>
-            <li>Private processing</li>
+            <li>One full export with watermark</li>
+            <li>Re-export same project with watermark</li>
+            <li>Private, local processing</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download free</a>
-            <div class="fineprint">No card needed for the first film.</div>
+            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+            <div class="fineprint">No card needed.</div>
           </div>
         </div>
 
         <div class="plan pro" role="listitem">
-          <div class="tag">PRO</div>
+          <div class="tag">PAID</div>
           <div class="priceRow">
             <div class="amount">€39 <small>/ year</small></div>
-            <div class="fineprint">or €9.99 per film</div>
+            <div class="fineprint">or €9.99 per project</div>
           </div>
           <ul class="bullets">
-            <li>Unlimited films</li>
-            <li>Unlimited uploads</li>
-            <li>Premium export quality</li>
+            <li>Single unlock — this project only, no watermark</li>
+            <li>PRO — unlimited projects while subscribed</li>
+            <li>Open checkout from the app (Help → Account or export prompt)</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="https://momentro.lemonsqueezy.com/checkout/buy/c9ae9187-b8e7-4bde-8917-e66c3ab5198b" rel="noopener noreferrer">Choose PRO — €39/year</a>
-            <a class="btn btn-light" href="https://momentro.lemonsqueezy.com/checkout/buy/59d883e5-a21e-4978-aedf-6267d75ad01a" rel="noopener noreferrer">Pay per film</a>
-            <div class="fineprint">Choose what fits your pace.</div>
+            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Get the app</a>
+            <a class="btn btn-light" href="../index.html#how-it-works">How it works</a>
+            <div class="fineprint">Website shows prices only; payment is in-app.</div>
           </div>
         </div>
       </div>

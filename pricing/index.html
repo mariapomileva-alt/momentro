@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momentro — Pricing</title>
-  <meta name="description" content="Simple, honest pricing for Momentro. Start free with your first film. Pay per film or go PRO for unlimited stories." />
+  <meta name="description" content="Momentro pricing: download the Windows app, create your first film free with a watermark, then upgrade inside the app — €9.99 per film or €39/year PRO." />
   <link rel="canonical" href="https://momentro.me/pricing/" />
   <link rel="shortcut icon" href="../favicon.ico?v=4" />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=4" />
@@ -39,6 +39,8 @@
 
     .intro p,
     .section p,
+    .pay-flow > p,
+    .pay-flow-step span,
     .bullets li,
     .compareTable td,
     .compareTable th,
@@ -100,6 +102,57 @@
     .faq dt{font-size:14px;color:#142b49}
     .faq dd{margin:0;color:#5a677f;font-size:13px;line-height:1.55}
 
+    .pay-flow{
+      margin:0 0 18px;
+      padding:20px 18px;
+      border-radius:22px;
+      border:1px solid #cde8b2;
+      background:linear-gradient(145deg,#f2ffe8 0%,#ecf9ff 100%);
+      box-shadow:0 12px 28px rgba(15,34,62,0.06);
+    }
+    .pay-flow h2{margin:0 0 4px;font-size:20px;line-height:1.1;color:#142b49}
+    .pay-flow > p{margin:0 0 16px;color:#5a677f;font-size:14px;line-height:1.45;max-width:720px}
+    .pay-flow-track{
+      display:flex;
+      align-items:stretch;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pay-flow-step{
+      flex:1 1 160px;
+      min-width:140px;
+      text-align:center;
+      padding:10px 8px 6px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.65);
+      border:1px solid rgba(219,232,207,0.9);
+    }
+    .pay-flow-num{
+      width:38px;height:38px;margin:0 auto 10px;
+      border-radius:14px;
+      background:var(--navy);
+      color:var(--green);
+      display:grid;
+      place-items:center;
+      font-size:15px;
+      box-shadow:0 10px 18px rgba(16,35,61,.14);
+    }
+    .pay-flow-step b{display:block;font-size:13px;color:#142b49;margin-bottom:4px;letter-spacing:0.02em}
+    .pay-flow-step span{display:block;font-size:12px;color:#5a677f;line-height:1.4;font-weight:500 !important;letter-spacing:0}
+    .pay-flow-join{
+      display:none;
+      align-self:center;
+      color:#9aa6bb;
+      font-size:18px;
+      font-weight:500 !important;
+      padding:0 4px;
+    }
+    @media (min-width: 720px){
+      .pay-flow-track{flex-wrap:nowrap;align-items:center}
+      .pay-flow-join{display:block}
+    }
+
     footer{margin-top:16px;color:#698070;font-size:13px;text-align:center}
     footer a{color:#2b5c49;text-decoration:none;border-bottom:1px solid rgba(43,92,73,.25);padding-bottom:1px}
     footer a:hover{border-bottom-color:rgba(43,92,73,.55)}
@@ -125,52 +178,75 @@
     </header>
 
     <section class="intro" aria-label="Intro">
-      <h1>Simple pricing. Start free.</h1>
-      <p>One small price for unlimited films. Or pay per film when you only need one. Your videos stay on your device.</p>
+      <h1>Pricing that starts in the app.</h1>
+      <p>Download Momentro for Windows, make your first film free (with a small watermark), then unlock clean exports when you’re ready — right inside the app. Your clips never leave your computer.</p>
       <div class="subrow">
-        <span class="pill">First film free</span>
-        <span>Cancel any time</span>
-        <span>No hidden fees</span>
+        <span class="pill">First export free</span>
+        <span>Pay in app only</span>
+        <span>Secure checkout</span>
+      </div>
+    </section>
+
+    <section class="pay-flow" aria-label="How paying works">
+      <h2>Three steps. One flow.</h2>
+      <p>No cart on this website — checkout opens from the desktop app so your purchase is tied to your account and your project.</p>
+      <div class="pay-flow-track" role="list">
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">1</div>
+          <b>Download</b>
+          <span>Install Momentro on Windows. No card.</span>
+        </div>
+        <span class="pay-flow-join" aria-hidden="true">→</span>
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">2</div>
+          <b>Create</b>
+          <span>Build your film. First full export is free with a watermark.</span>
+        </div>
+        <span class="pay-flow-join" aria-hidden="true">→</span>
+        <div class="pay-flow-step" role="listitem">
+          <div class="pay-flow-num" aria-hidden="true">3</div>
+          <b>Upgrade in app</b>
+          <span>Remove the watermark: €9.99 for this project, or €39/year for unlimited.</span>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-label="Plans">
       <h2>Plans</h2>
-      <p>Two ways to use Momentro. Most people pick PRO after their first film.</p>
+      <p>Same prices everywhere — you always complete checkout from the app so we can unlock the right project or your PRO subscription.</p>
 
       <div class="pricing" role="list">
         <div class="plan" role="listitem">
           <div class="tag">FREE</div>
           <div class="priceRow">
-            <div class="amount">€0 <small>first film</small></div>
+            <div class="amount">€0 <small>first export</small></div>
           </div>
           <ul class="bullets">
-            <li>Create your first film free</li>
-            <li>Upload from any device</li>
+            <li>One full film with watermark</li>
+            <li>Re-export the same free project with watermark</li>
             <li>Local processing — files stay on your computer</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download free</a>
-            <div class="fineprint">No card needed for the first film.</div>
+            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+            <div class="fineprint">No card needed. Mac app coming soon.</div>
           </div>
         </div>
 
         <div class="plan pro" role="listitem">
-          <div class="tag">PRO</div>
+          <div class="tag">PAID — in app</div>
           <div class="priceRow">
             <div class="amount">€39 <small>/ year</small></div>
-            <div class="fineprint">or €9.99 per film</div>
+            <div class="fineprint">or €9.99 per project</div>
           </div>
           <ul class="bullets">
-            <li>Unlimited films</li>
-            <li>Unlimited uploads</li>
-            <li>Premium export quality</li>
-            <li>Priority support</li>
+            <li><strong>Single (€9.99)</strong> — unlocks watermark-free export for the project you’re in</li>
+            <li><strong>PRO (€39/year)</strong> — unlimited projects, no watermark while active</li>
+            <li>Checkout opens in your browser from the app — same secure payment, tied to your account</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="https://momentro.lemonsqueezy.com/checkout/buy/c9ae9187-b8e7-4bde-8917-e66c3ab5198b" rel="noopener noreferrer">Choose PRO — €39/year</a>
-            <a class="btn btn-light" href="https://momentro.lemonsqueezy.com/checkout/buy/59d883e5-a21e-4978-aedf-6267d75ad01a" rel="noopener noreferrer">Pay per film</a>
-            <div class="fineprint">Annual billing. Cancel any time.</div>
+            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Get the app to upgrade</a>
+            <a class="btn btn-light" href="../index.html#how-it-works">See how it works</a>
+            <div class="fineprint">After install, use Help → Account or the upgrade prompt before export.</div>
           </div>
         </div>
       </div>
@@ -183,12 +259,12 @@
           <tr><th>Feature</th><th>Free</th><th>PRO</th></tr>
         </thead>
         <tbody>
-          <tr><td>First film</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>First watermarked export</td><td class="yes">Included</td><td class="yes">Included</td></tr>
           <tr><td>Films per year</td><td>1</td><td class="yes">Unlimited</td></tr>
           <tr><td>Upload size</td><td>Up to 50 GB</td><td class="yes">Unlimited</td></tr>
           <tr><td>Export quality</td><td>Standard 1080p</td><td class="yes">Premium up to 4K</td></tr>
           <tr><td>Local-only processing</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-          <tr><td>Watermark</td><td class="muted">None</td><td class="muted">None</td></tr>
+          <tr><td>Watermark on export</td><td>Yes (first free export)</td><td class="yes">No</td></tr>
           <tr><td>Support</td><td>Community</td><td class="yes">Priority email</td></tr>
         </tbody>
       </table>
@@ -198,9 +274,11 @@
       <h2>Pricing FAQ</h2>
       <dl>
         <dt>Is the first film really free?</dt>
-        <dd>Yes. You can create one full-length film without paying or entering a card.</dd>
+        <dd>Yes. Your first full export is free and includes a small watermark. No card. Re-exports of that same free project stay watermarked until you upgrade.</dd>
+        <dt>Can I pay on this website?</dt>
+        <dd>No — for your purchase to unlock the right project (or your annual plan), checkout runs from the desktop app. This page is only to explain prices.</dd>
         <dt>What does PRO cost?</dt>
-        <dd>€39 per year for unlimited films and uploads. Or €9.99 for a single extra film if you only need one.</dd>
+        <dd>€39 per year for unlimited watermark-free exports while your subscription is active. Or €9.99 once to remove the watermark for the current project only.</dd>
         <dt>Can I cancel?</dt>
         <dd>Anytime. You keep access until the end of the billing period.</dd>
         <dt>Are my files uploaded to the cloud?</dt>
