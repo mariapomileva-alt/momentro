@@ -105,6 +105,10 @@
       font-weight: 700;
       border: 1px solid transparent;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
 
     .btn-light {
@@ -1382,6 +1386,40 @@
       .step-visual { aspect-ratio: 16 / 9; }
       .steps-track { display: none; }
       .magic-line { font-size: 13px; padding: 12px 14px; }
+
+      .topbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+      .top-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        max-width: 100%;
+      }
+      .brand { font-size: 26px; }
+      .brand-mark { width: 38px; height: 38px; border-radius: 11px; }
+
+      .hero .cta,
+      .compare-cta,
+      .final-cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero .cta .btn,
+      .compare-cta .btn,
+      .final-cta-buttons .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .top-actions .how-link { display: none; }
+      .shell { padding-left: 16px; padding-right: 16px; }
+      .hero { padding: 28px 22px; }
+      .hero h1 { font-size: 38px; }
     }
   </style>
 </head>
@@ -1397,10 +1435,10 @@
         <span>Momentro</span>
       </div>
       <nav class="top-actions">
-        <a class="btn btn-light" href="#how-it-works">See how it works</a>
-        <div class="download-wrap">
-          <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Windows</a>
-          <a class="btn btn-light" href="https://download.momentro.me/macos/latest">Mac</a>
+        <a class="btn btn-light how-link" href="#how-it-works">See how it works</a>
+        <div class="download-wrap" data-platform-pair>
+          <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Windows</a>
+          <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Mac</a>
         </div>
       </nav>
     </header>
@@ -1411,16 +1449,16 @@
         <p>
           Drop all your clips into Momentro. The desktop app handles big files locally, cuts the chaos, adds music and titles, and gives you one beautiful video.
         </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-          <a class="btn btn-light" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+        <div class="cta" data-platform-pair>
+          <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+          <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
         </div>
         <div class="hero-trust">First export free with watermark · Upgrade in the app · Your files stay on your computer</div>
-        <div class="micro-proof">Your clips are everywhere. You never get back to them.</div>
+        <div class="micro-proof">Your clips pile up. The film never gets finished.</div>
         <div class="trust-row">
           <span class="trust-pill">Camera roll chaos</span>
           <span class="trust-pill">One story, ready</span>
-          <span class="trust-pill">No cloud needed</span>
+          <span class="trust-pill">Local processing</span>
         </div>
       </div>
       <div class="mock">
@@ -1524,11 +1562,11 @@
         <span class="knot"></span>
       </div>
       <div class="magic-line">Automatic first cut. One finished film.</div>
-      <div class="compare-cta">
-        <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-        <a class="btn btn-light" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+      <div class="compare-cta" data-platform-pair>
+        <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+        <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
       </div>
-      <div class="steps-trust">Works with local files. No cloud upload.</div>
+      <div class="steps-trust">Works with local files. Media stays on your computer.</div>
       <div class="steps-microtrust">First film free · Mac &amp; Windows</div>
       <div class="privacy-mini" aria-label="Privacy and local processing">
         <div class="icon" aria-hidden="true">
@@ -1539,7 +1577,7 @@
         </div>
         <div class="text">
           <p class="title">Your files stay on your computer</p>
-          <p class="desc">Nothing is uploaded. Nothing leaves your device.</p>
+          <p class="desc">Photos and videos are never uploaded for editing.</p>
         </div>
       </div>
     </section>
@@ -1595,9 +1633,9 @@
         <p>In a few clicks, your scattered clips become one finished film on your computer.</p>
         <div class="urgency">Pay when you love it — €9.99 per project or €39/year PRO, inside the app.</div>
       </div>
-      <div class="final-cta-buttons">
-        <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-        <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+      <div class="final-cta-buttons" data-platform-pair>
+        <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+        <a class="btn btn-primary" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
       </div>
       <div class="final-cta-trust">First export free (watermark) · Pay in app · Windows &amp; Mac</div>
     </section>
@@ -1616,5 +1654,23 @@
       </div>
     </footer>
   </div>
+  <script>
+    (function () {
+      var isMacDesktop = /Macintosh|Mac OS X/.test(navigator.userAgent) && !/iPhone|iPad|iPod/.test(navigator.userAgent);
+      if (!isMacDesktop) return;
+      document.querySelectorAll("[data-platform-pair]").forEach(function (group) {
+        var win = group.querySelector('[data-platform="windows"]');
+        var mac = group.querySelector('[data-platform="mac"]');
+        if (!win || !mac) return;
+        if (win.classList.contains("btn-primary") && !mac.classList.contains("btn-primary")) {
+          win.classList.remove("btn-primary");
+          win.classList.add("btn-light");
+          mac.classList.remove("btn-light");
+          mac.classList.add("btn-primary");
+        }
+        group.insertBefore(mac, win);
+      });
+    })();
+  </script>
 </body>
 </html>
