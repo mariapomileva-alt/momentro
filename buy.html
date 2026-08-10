@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momentro — Pricing</title>
-  <link rel="shortcut icon" href="favicon.ico?v=4" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32-v2.png?v=4" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16-v2.png?v=4" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-v2.png?v=4" />
+  <link rel="shortcut icon" href="../favicon.ico?v=4" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32-v2.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16-v2.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-v2.png?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -245,12 +245,6 @@
   </style>
 </head>
 <body>
-  <script>
-    (function () {
-      const target = "/buy/" + (location.search || "") + (location.hash || "");
-      location.replace(target);
-    })();
-  </script>
   <div class="shell">
     <header class="topbar">
       <a class="brand" href="index.html" aria-label="Back to Momentro home">
@@ -267,7 +261,7 @@
       <p>Download Momentro, export your first film free with a watermark, then unlock clean exports from the app — €9.99 for this project or €39/year for unlimited.</p>
       <div class="subrow">
         <span class="pill">Pay in app</span>
-        <span id="platformText">Windows app available now</span>
+        <span id="platformText">Windows &amp; Mac available now</span>
       </div>
     </section>
 
@@ -278,7 +272,7 @@
         <div class="pay-flow-step" role="listitem">
           <div class="pay-flow-num" aria-hidden="true">1</div>
           <b>Download</b>
-          <span>Install on Windows. No card.</span>
+          <span>Install on Windows or Mac. No card.</span>
         </div>
         <span class="pay-flow-join" aria-hidden="true">→</span>
         <div class="pay-flow-step" role="listitem">
@@ -312,6 +306,7 @@
           </ul>
           <div class="cta">
             <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Download for Mac</a>
             <div class="fineprint">No card needed.</div>
           </div>
         </div>
@@ -328,8 +323,9 @@
             <li>Open checkout from the app (Help → Account or export prompt)</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Get the app</a>
-            <a class="btn btn-light" href="index.html#how-it-works">How it works</a>
+            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Windows — get the app</a>
+            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Mac — get the app</a>
+            <a class="btn btn-light" href="../index.html#how-it-works">How it works</a>
             <div class="fineprint">Website shows prices only; payment is in-app.</div>
           </div>
         </div>
@@ -363,9 +359,15 @@
 
   <script>
     const params = new URLSearchParams(location.search);
-    const platform = (params.get("platform") || "windows").toLowerCase();
+    const platform = (params.get("platform") || "").toLowerCase();
     const platformText = document.getElementById("platformText");
-    platformText.textContent = platform === "mac" ? "Mac coming soon" : "Windows app available now";
+    if (platform === "mac" || platform === "macos") {
+      platformText.textContent = "Mac app available now";
+    } else if (platform === "windows" || platform === "win") {
+      platformText.textContent = "Windows app available now";
+    } else {
+      platformText.textContent = "Windows & Mac available now";
+    }
   </script>
 </body>
 </html>
