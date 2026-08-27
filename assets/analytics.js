@@ -354,6 +354,26 @@
     return Boolean(ph && typeof ph.capture === "function");
   }
 
+  /**
+   * Strip only personal/profile fields. Never delete cookieless hash
+   * ingredients ($raw_user_agent, $ip, $host) — PostHog drops sentinel
+   * `$posthog_cookieless` events when those are missing.
+   */
+  function scrubPrivacyProperties(props) {
+    if (!props) return props;
+    delete props.email;
+    delete props.$set;
+    delete props.$set_once;
+    return props;
+  }
+
+  function beforeSend(event) {
+    if (event && event.properties) {
+      scrubPrivacyProperties(event.properties);
+    }
+    return event;
+  }
+
   function captureViaSdk(eventName, payload, transport) {
     try {
       var ph = getPosthog();
@@ -436,7 +456,7 @@
           ui_host: EU_UI_HOST,
           defaults: "2025-11-30",
           cookieless_mode: "always",
-          person_profiles: "identified_only",
+          person_profiles: "never",
           persistence: "memory",
           autocapture: false,
           capture_pageview: false,
@@ -444,15 +464,7 @@
           disable_session_recording: true,
           disable_surveys: true,
           request_batching: false,
-          sanitize_properties: function (props) {
-            if (!props) return props;
-            delete props.$ip;
-            delete props.$raw_user_agent;
-            delete props.email;
-            delete props.$set;
-            delete props.$set_once;
-            return props;
-          }
+          before_send: beforeSend
         });
         providerReady = true;
         flushQueue();
@@ -666,6 +678,8 @@
       hasUtm: hasUtm,
       analyticsPage: analyticsPage,
       resolveApiHost: resolveApiHost,
+      scrubPrivacyProperties: scrubPrivacyProperties,
+      beforeSend: beforeSend,
       isLandingViewSent: function () {
         return landingViewSent;
       },

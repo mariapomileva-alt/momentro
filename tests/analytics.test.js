@@ -426,6 +426,72 @@ test("HTML CTAs expose stable analytics ids and expected placements", function (
   assert.match(refund, /data-cta-placement="refund"/);
 });
 
+test("privacy scrub keeps cookieless hash ingredients and drops email/profile writes", function () {
+  const kept = analytics._internal.scrubPrivacyProperties({
+    email: "a@b.c",
+    $set: { email: "a@b.c" },
+    $set_once: { name: "x" },
+    $raw_user_agent: "Mozilla/5.0",
+    $ip: "203.0.113.10",
+    $host: "momentro.me",
+    $current_url: "https://momentro.me/",
+    utm_source: "instagram",
+    landing_path: "/"
+  });
+  assert.equal("email" in kept, false);
+  assert.equal("$set" in kept, false);
+  assert.equal("$set_once" in kept, false);
+  assert.equal(kept.$raw_user_agent, "Mozilla/5.0");
+  assert.equal(kept.$ip, "203.0.113.10");
+  assert.equal(kept.$host, "momentro.me");
+  assert.equal(kept.$current_url, "https://momentro.me/");
+  assert.equal(kept.utm_source, "instagram");
+  const event = analytics._internal.beforeSend({
+    event: "landing_view",
+    properties: { email: "hidden@x.y", $raw_user_agent: "Mozilla/5.0", $host: "momentro.me" }
+  });
+  assert.equal(event.event, "landing_view");
+  assert.equal("email" in event.properties, false);
+  assert.equal(event.properties.$raw_user_agent, "Mozilla/5.0");
+  assert.equal(event.properties.$host, "momentro.me");
+});
+
+test("PostHog identity config is cookieless EU and does not strip hash ingredients", function () {
+  const source = fs.readFileSync(path.join(__dirname, "../assets/analytics.js"), "utf8");
+  assert.match(source, /cookieless_mode:\s*"always"/);
+  assert.match(source, /person_profiles:\s*"never"/);
+  assert.match(source, /before_send:\s*beforeSend/);
+  assert.equal(source.includes("sanitize_properties"), false);
+  assert.equal(source.includes("delete props.$raw_user_agent"), false);
+  assert.equal(source.includes("delete props.$ip"), false);
+  assert.equal(source.includes("delete props.$host"), false);
+  assert.match(source, /api_host:\s*EU_API_HOST/);
+  const cfg = fs.readFileSync(path.join(__dirname, "../assets/analytics-config.js"), "utf8");
+  assert.match(cfg, /posthogApiHost:\s*"https:\/\/eu\.i\.posthog\.com"/);
+  assert.match(cfg, /posthogProjectKey:\s*"phc_/);
+});
+
+test("three product events keep names and are the only Momentro funnel captures", function () {
+  const events = [];
+  global.window.posthog = {
+    capture: function (name, props) {
+      events.push({ name: name, props: props });
+    }
+  };
+  analytics.trackLandingView();
+  analytics.trackStartFreeClick("hero", "macos");
+  analytics.trackDownloadStarted("hero", "macos", "https://download.momentro.me/macos/latest");
+  assert.deepEqual(
+    events.map(function (item) {
+      return item.name;
+    }),
+    ["landing_view", "start_free_click", "download_started"]
+  );
+  assert.equal(analytics.EVENTS.LANDING_VIEW, "landing_view");
+  assert.equal(analytics.EVENTS.START_FREE_CLICK, "start_free_click");
+  assert.equal(analytics.EVENTS.DOWNLOAD_STARTED, "download_started");
+});
+
 test("PostHog ingest host is pinned to Cloud EU", function () {
   assert.equal(analytics.EU_API_HOST, "https://eu.i.posthog.com");
   assert.equal(analytics.EU_ASSETS_HOST, "https://eu-assets.i.posthog.com");
@@ -434,6 +500,7 @@ test("PostHog ingest host is pinned to Cloud EU", function () {
   assert.equal(analytics._internal.resolveApiHost(""), "https://eu.i.posthog.com");
   const source = fs.readFileSync(path.join(__dirname, "../assets/analytics.js"), "utf8");
   assert.match(source, /cookieless_mode:\s*"always"/);
+  assert.match(source, /person_profiles:\s*"never"/);
   assert.match(source, /autocapture:\s*false/);
   assert.match(source, /capture_pageview:\s*false/);
   assert.match(source, /disable_session_recording:\s*true/);

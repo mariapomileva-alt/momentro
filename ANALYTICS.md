@@ -70,7 +70,8 @@ If `sessionStorage` is blocked, attribution falls back to the current URL.
 ## Privacy model
 
 - Provider: PostHog Cloud EU (`https://eu.i.posthog.com`).
-- `cookieless_mode: 'always'` — no PostHog cookies, no localStorage identity.
+- `cookieless_mode: 'always'` — no PostHog cookies, no localStorage identity. The JS SDK sends distinct ID `$posthog_cookieless`; PostHog replaces it server-side with a daily hash of IP + user agent + host. Live events showing `$posthog_cookieless` is expected. Historical Events / HogQL must show hashed ids, not the sentinel.
+- Do not strip `$raw_user_agent`, `$ip`, or `$host` in `before_send`. Those are cookieless hash ingredients; deleting them drops the event after Live.
 - No autocapture, session replay, surveys, or default pageviews.
 - Client config contains only the **public** project API key (`phc_…`).
 - Personal/admin API keys stay in the Analytics Agent (content-studio), never in this repo.
@@ -81,7 +82,7 @@ This matches the site privacy copy: privacy-respecting analytics, no advertising
 
 1. Create a project at [eu.posthog.com](https://eu.posthog.com) (EU cloud, not US). Project name: `Momentro Website`.
 2. Project settings → **Project API Key**. Paste the public `phc_…` value into `assets/analytics-config.js` as `posthogProjectKey` (the empty quotes on that property). Do not paste a Personal API Key.
-3. Enable **Cookieless server hash mode** for the project. Until this is on, cookieless events may be dropped.
+3. Enable **Cookieless server hash mode** for the project (Project settings → Web analytics). Until this is on, SDK events with distinct ID `$posthog_cookieless` appear in **Live** and are **dropped before historical Events / HogQL**, with no ingestion warning.
 4. Keep **session replay** and **autocapture** off. This site also sets `capture_pageview: false`.
 5. Leave IP capture at the EU default (off).
 6. Ingest host is hardcoded to `https://eu.i.posthog.com`. US hosts in config are ignored. Do not change GitHub Pages or DNS for this step.
