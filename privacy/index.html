@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-analytics-page="privacy">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -149,7 +149,7 @@
       <h3>2.3 Diagnostic data</h3>
       <p>The app may send anonymized crash reports and basic usage metrics (app version, OS version, feature events) to help us fix bugs. You can opt out in app settings at any time.</p>
       <h3>2.4 Website data</h3>
-      <p>Our website may use privacy-respecting analytics (e.g. aggregated, IP-anonymized page views) and minimal cookies needed for the site to function. We do not run third-party advertising trackers.</p>
+      <p>Our website uses privacy-respecting, cookieless analytics for aggregated page views and conversion events (landing, Start-free equivalent clicks, and download starts). Analytics is provided by PostHog Cloud EU. We do not run advertising pixels, session replay, or fingerprinting, and we do not store a persistent visitor ID in cookies. If analytics is blocked, the site and downloads still work. Minimal cookies may still be used only if needed for the site to function.</p>
 
       <h2 id="why">3. Why we process it</h2>
       <ul>
@@ -163,7 +163,7 @@
       <p>Where GDPR applies, we rely on: (a) <em>contract</em> to deliver the service you bought, (b) <em>legitimate interest</em> for security and basic analytics, (c) <em>consent</em> for optional telemetry, (d) <em>legal obligation</em> for tax records.</p>
 
       <h2 id="share">5. Sharing &amp; processors</h2>
-      <p>We use a small number of trusted vendors to operate the service. Typical categories: payment processing, transactional email, error tracking, hosting and CDN. We choose vendors that comply with GDPR and bind them to data-processing terms. We do not sell your personal data.</p>
+      <p>We use a small number of trusted vendors to operate the service. Typical categories: payment processing, transactional email, error tracking, hosting and CDN, and cookieless website analytics (PostHog Cloud EU). We choose vendors that comply with GDPR and bind them to data-processing terms. We do not sell your personal data.</p>
 
       <h2 id="retention">6. Retention</h2>
       <ul>
@@ -199,5 +199,7 @@
       </div>
     </footer>
   </div>
+  <script src="../assets/analytics-config.js?v=sdk-queue-1"></script>
+  <script src="../assets/analytics.js?v=sdk-queue-1"></script>
 </body>
 </html>

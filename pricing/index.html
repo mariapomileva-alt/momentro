@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-analytics-page="pricing">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -227,8 +227,8 @@
             <li>Local processing — files stay on your computer</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+            <a class="btn btn-pay" data-platform="windows" data-analytics-id="start-free" data-cta-placement="pricing_free" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+            <a class="btn btn-primary" data-platform="mac" data-analytics-id="start-free" data-cta-placement="pricing_free" href="https://download.momentro.me/macos/latest">Download for Mac</a>
             <div class="fineprint">No card needed. Windows &amp; Mac available now.</div>
           </div>
         </div>
@@ -245,8 +245,8 @@
             <li>Checkout opens in your browser from the app — same secure payment, tied to your account</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Windows — get the app</a>
-            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Mac — get the app</a>
+            <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="pricing_paid" href="https://download.momentro.me/windows/latest">Windows — get the app</a>
+            <a class="btn btn-primary" data-platform="mac" data-analytics-id="start-free" data-cta-placement="pricing_paid" href="https://download.momentro.me/macos/latest">Mac — get the app</a>
             <a class="btn btn-light" href="../index.html#how-it-works">See how it works</a>
             <div class="fineprint">After install, use Help → Account or the upgrade prompt before export.</div>
           </div>
@@ -301,5 +301,7 @@
       </div>
     </footer>
   </div>
+  <script src="../assets/analytics-config.js?v=sdk-queue-1"></script>
+  <script src="../assets/analytics.js?v=sdk-queue-1"></script>
 </body>
 </html>

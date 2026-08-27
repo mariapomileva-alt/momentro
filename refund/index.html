@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-analytics-page="refund">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -145,7 +145,7 @@
       <h2>7. Contact</h2>
       <p>For any billing or general question, email <a href="mailto:hello@momentro.me">hello@momentro.me</a>.</p>
 
-      <p style="margin-top:18px"><a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Try Momentro free</a></p>
+      <p style="margin-top:18px"><a class="btn btn-pay" data-platform="windows" data-analytics-id="start-free" data-cta-placement="refund" href="https://download.momentro.me/windows/latest">Try Momentro free</a></p>
     </article>
 
     <footer>
@@ -159,5 +159,7 @@
       </div>
     </footer>
   </div>
+  <script src="../assets/analytics-config.js?v=sdk-queue-1"></script>
+  <script src="../assets/analytics.js?v=sdk-queue-1"></script>
 </body>
 </html>

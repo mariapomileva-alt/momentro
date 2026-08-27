@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-analytics-page="buy">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -305,8 +305,8 @@
             <li>Private, local processing</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-pay" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+            <a class="btn btn-pay" data-platform="windows" data-analytics-id="start-free" data-cta-placement="buy_free" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+            <a class="btn btn-primary" data-platform="mac" data-analytics-id="start-free" data-cta-placement="buy_free" href="https://download.momentro.me/macos/latest">Download for Mac</a>
             <div class="fineprint">No card needed.</div>
           </div>
         </div>
@@ -323,8 +323,8 @@
             <li>Open checkout from the app (Help → Account or export prompt)</li>
           </ul>
           <div class="cta">
-            <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Windows — get the app</a>
-            <a class="btn btn-primary" href="https://download.momentro.me/macos/latest">Mac — get the app</a>
+            <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="buy_paid" href="https://download.momentro.me/windows/latest">Windows — get the app</a>
+            <a class="btn btn-primary" data-platform="mac" data-analytics-id="start-free" data-cta-placement="buy_paid" href="https://download.momentro.me/macos/latest">Mac — get the app</a>
             <a class="btn btn-light" href="../index.html#how-it-works">How it works</a>
             <div class="fineprint">Website shows prices only; payment is in-app.</div>
           </div>
@@ -369,5 +369,7 @@
       platformText.textContent = "Windows & Mac available now";
     }
   </script>
+  <script src="assets/analytics-config.js?v=sdk-queue-1"></script>
+  <script src="assets/analytics.js?v=sdk-queue-1"></script>
 </body>
 </html>

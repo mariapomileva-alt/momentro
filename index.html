@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-analytics-page="landing">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1437,8 +1437,8 @@
       <nav class="top-actions">
         <a class="btn btn-light how-link" href="#how-it-works">See how it works</a>
         <div class="download-wrap" data-platform-pair>
-          <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Windows</a>
-          <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Mac</a>
+          <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="header" href="https://download.momentro.me/windows/latest">Windows</a>
+          <a class="btn btn-light" data-platform="mac" data-analytics-id="start-free" data-cta-placement="header" href="https://download.momentro.me/macos/latest">Mac</a>
         </div>
       </nav>
     </header>
@@ -1450,8 +1450,8 @@
           Drop all your clips into Momentro. The desktop app handles big files locally, cuts the chaos, adds music and titles, and gives you one beautiful video.
         </p>
         <div class="cta" data-platform-pair>
-          <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-          <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+          <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="hero" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+          <a class="btn btn-light" data-platform="mac" data-analytics-id="start-free" data-cta-placement="hero" href="https://download.momentro.me/macos/latest">Download for Mac</a>
         </div>
         <div class="hero-trust">First export free with watermark · Upgrade in the app · Your files stay on your computer</div>
         <div class="micro-proof">Your clips pile up. The film never gets finished.</div>
@@ -1563,8 +1563,8 @@
       </div>
       <div class="magic-line">Automatic first cut. One finished film.</div>
       <div class="compare-cta" data-platform-pair>
-        <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-        <a class="btn btn-light" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+        <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="how_it_works" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+        <a class="btn btn-light" data-platform="mac" data-analytics-id="start-free" data-cta-placement="how_it_works" href="https://download.momentro.me/macos/latest">Download for Mac</a>
       </div>
       <div class="steps-trust">Works with local files. Media stays on your computer.</div>
       <div class="steps-microtrust">First film free · Mac &amp; Windows</div>
@@ -1634,8 +1634,8 @@
         <div class="urgency">Pay when you love it — €9.99 per project or €39/year PRO, inside the app.</div>
       </div>
       <div class="final-cta-buttons" data-platform-pair>
-        <a class="btn btn-primary" data-platform="windows" href="https://download.momentro.me/windows/latest">Download for Windows</a>
-        <a class="btn btn-primary" data-platform="mac" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+        <a class="btn btn-primary" data-platform="windows" data-analytics-id="start-free" data-cta-placement="final_cta" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+        <a class="btn btn-primary" data-platform="mac" data-analytics-id="start-free" data-cta-placement="final_cta" href="https://download.momentro.me/macos/latest">Download for Mac</a>
       </div>
       <div class="final-cta-trust">First export free (watermark) · Pay in app · Windows &amp; Mac</div>
     </section>
@@ -1672,5 +1672,7 @@
       });
     })();
   </script>
+  <script src="assets/analytics-config.js?v=sdk-queue-1"></script>
+  <script src="assets/analytics.js?v=sdk-queue-1"></script>
 </body>
 </html>
