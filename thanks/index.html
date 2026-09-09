@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-analytics-page="thanks">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momentro — Thank you</title>
+  <meta name="description" content="Thanks for your Momentro purchase. Gift codes appear here after payment." />
+  <link rel="shortcut icon" href="../favicon.ico?v=4" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32-v2.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16-v2.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-v2.png?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --navy:#10233d;
+      --ink:#0f223e;
+      --bg:#f4f9ef;
+      --green:#89ff2e;
+      --muted:#5a677f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-weight:900;
+      letter-spacing:-0.02em;
+      color:var(--ink);
+      background:radial-gradient(circle at 12% 0%, #ffffff 0%, var(--bg) 46%);
+    }
+    *,*::before,*::after{font-weight:900 !important}
+    .shell{max-width:720px;margin:0 auto;padding:40px 20px 86px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-size:28px;color:var(--ink);text-decoration:none;margin-bottom:28px}
+    .brand-mark{width:42px;height:42px;border-radius:13px;background:var(--navy);color:var(--green);display:grid;place-items:center}
+    .brand-mark .mark-svg{width:90%;height:90%}
+    h1{margin:0 0 10px;font-size:40px;line-height:1;color:#142b49}
+    p{color:var(--muted);font-size:15px;font-weight:650;line-height:1.45}
+    .panel{
+      margin-top:22px;padding:22px;border-radius:22px;border:1px solid #e3edd7;
+      background:rgba(255,255,255,.88);box-shadow:0 14px 30px rgba(15,34,62,.06);
+    }
+    .code{
+      margin:12px 0 0;padding:16px 18px;border-radius:16px;background:#10233d;color:var(--green);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:28px;letter-spacing:.08em;
+      text-align:center;user-select:all;
+    }
+    .status{margin-top:10px;font-size:13px;color:#698070}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .btn{
+      border-radius:12px;padding:10px 16px;font-size:13px;border:1px solid transparent;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    }
+    .btn-primary{background:var(--navy);color:#f6fff1}
+    .btn-light{border-color:#abc58f;color:#20402f;background:transparent}
+    footer{margin-top:28px;color:#698070;font-size:13px}
+    footer a{color:#2b5c49;text-decoration:none;border-bottom:1px solid rgba(43,92,73,.25)}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none"><path d="M9 31V9L20 23L31 9V31" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>Momentro</span>
+    </a>
+
+    <h1>Thank you.</h1>
+    <p id="lead">Your payment went through. If you bought a gift, your code will appear below in a few seconds.</p>
+
+    <div class="panel" id="giftPanel" hidden>
+      <strong id="giftKindLabel">Your gift code</strong>
+      <div class="code" id="giftCode">————</div>
+      <p class="status" id="giftStatus">Preparing your code…</p>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" id="copyCode">Copy code</button>
+        <a class="btn btn-light" href="https://download.momentro.me/mac">Download Momentro</a>
+        <a class="btn btn-light" href="../gift/">Buy another gift</a>
+      </div>
+      <p class="status" style="margin-top:14px">
+        Recipient: open Momentro → Account → paste the code → Redeem.
+        Film gifts add 1 unlock credit; year gifts activate 12 months unlimited.
+      </p>
+    </div>
+
+    <div class="panel" id="regularPanel">
+      <p style="margin:0">
+        If you purchased from inside the app, return to Momentro and click
+        <strong>Refresh status</strong> in Account. Your unlock or subscription should appear within a minute.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="../gift/">Buy a gift card</a>
+        <a class="btn btn-light" href="../index.html">Back home</a>
+      </div>
+    </div>
+
+    <footer>
+      <a href="../buy/">Buy</a> ·
+      <a href="../gift/">Gift</a> ·
+      <a href="../refund/">Refunds</a> ·
+      <a href="mailto:hello@momentro.me">hello@momentro.me</a>
+    </footer>
+  </div>
+
+  <script src="../assets/analytics-config.js"></script>
+  <script src="../assets/analytics.js"></script>
+  <script>
+    (function () {
+      var API = 'https://api.momentro.me';
+      var params = new URLSearchParams(window.location.search);
+      var orderId = params.get('order_id') || params.get('orderId') || params.get('order') || '';
+      var isGift = params.get('gift') === '1' || !!orderId;
+      var giftPanel = document.getElementById('giftPanel');
+      var regularPanel = document.getElementById('regularPanel');
+      var codeEl = document.getElementById('giftCode');
+      var statusEl = document.getElementById('giftStatus');
+      var kindEl = document.getElementById('giftKindLabel');
+      var lead = document.getElementById('lead');
+      var tries = 0;
+
+      if (isGift) {
+        giftPanel.hidden = false;
+        regularPanel.hidden = true;
+        lead.textContent = 'Thanks for gifting Momentro. Copy the code below and send it to the recipient.';
+      }
+
+      async function poll() {
+        if (!orderId || orderId === '[order_id]') {
+          statusEl.textContent = 'Missing order id. Check your Lemon Squeezy receipt email, or contact hello@momentro.me.';
+          return;
+        }
+        try {
+          var res = await fetch(API + '/v1/gift/by-order?order_id=' + encodeURIComponent(orderId));
+          var data = await res.json().catch(function () { return {}; });
+          if (data && data.ok && data.code) {
+            codeEl.textContent = data.code;
+            kindEl.textContent = data.kind === 'gift_annual'
+              ? 'Your 1-year gift code'
+              : 'Your one-film gift code';
+            statusEl.textContent = data.message || 'Ready to share.';
+            return;
+          }
+          statusEl.textContent = (data && data.message) || 'Still preparing your code…';
+        } catch (e) {
+          statusEl.textContent = 'Could not reach Momentro. Retrying…';
+        }
+        tries += 1;
+        if (tries < 30) setTimeout(poll, 2000);
+        else statusEl.textContent = 'Code is taking longer than expected. Email hello@momentro.me with your order ID.';
+      }
+
+      document.getElementById('copyCode').addEventListener('click', function () {
+        var text = codeEl.textContent || '';
+        if (!text || text.indexOf('—') === 0) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text);
+        }
+      });
+
+      if (isGift) poll();
+    })();
+  </script>
+</body>
+</html>

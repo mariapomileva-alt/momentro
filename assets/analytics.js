@@ -42,6 +42,8 @@
     landing: true,
     pricing: true,
     buy: true,
+    gift: true,
+    thanks: true,
     refund: true
   };
 
