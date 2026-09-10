@@ -54,6 +54,7 @@
     }
     .btn-primary{background:var(--navy);color:#f6fff1}
     .btn-light{border-color:#abc58f;color:#20402f;background:transparent}
+    .btn:disabled{opacity:.55;cursor:wait}
     footer{margin-top:28px;color:#698070;font-size:13px}
     footer a{color:#2b5c49;text-decoration:none;border-bottom:1px solid rgba(43,92,73,.25)}
   </style>
@@ -74,12 +75,14 @@
       <p class="status" id="giftStatus">Preparing your code…</p>
       <div class="actions">
         <button class="btn btn-primary" type="button" id="copyCode">Copy code</button>
+        <button class="btn btn-primary" type="button" id="downloadPdf" disabled>Download PDF certificate</button>
         <a class="btn btn-light" href="https://download.momentro.me/mac">Download Momentro</a>
         <a class="btn btn-light" href="../gift/">Buy another gift</a>
       </div>
       <p class="status" style="margin-top:14px">
         Recipient: open Momentro → Account → paste the code → Redeem.
         Film gifts add 1 unlock credit; year gifts activate 12 months unlimited.
+        The PDF is designed to print or send as a physical / email gift.
       </p>
     </div>
 
@@ -104,6 +107,7 @@
 
   <script src="../assets/analytics-config.js"></script>
   <script src="../assets/analytics.js"></script>
+  <script src="../assets/gift-certificate.js"></script>
   <script>
     (function () {
       var API = 'https://api.momentro.me';
@@ -116,12 +120,25 @@
       var statusEl = document.getElementById('giftStatus');
       var kindEl = document.getElementById('giftKindLabel');
       var lead = document.getElementById('lead');
+      var pdfBtn = document.getElementById('downloadPdf');
       var tries = 0;
+      var giftKind = 'gift_single';
+      var giftReady = false;
 
       if (isGift) {
         giftPanel.hidden = false;
         regularPanel.hidden = true;
-        lead.textContent = 'Thanks for gifting Momentro. Copy the code below and send it to the recipient.';
+        lead.textContent = 'Thanks for gifting Momentro. Copy the code below, or download a printable PDF certificate.';
+      }
+
+      function setGiftReady(code, kind) {
+        giftReady = true;
+        giftKind = kind || 'gift_single';
+        codeEl.textContent = code;
+        kindEl.textContent = giftKind === 'gift_annual'
+          ? 'Your 1-year gift code'
+          : 'Your one-film gift code';
+        pdfBtn.disabled = false;
       }
 
       async function poll() {
@@ -133,10 +150,7 @@
           var res = await fetch(API + '/v1/gift/by-order?order_id=' + encodeURIComponent(orderId));
           var data = await res.json().catch(function () { return {}; });
           if (data && data.ok && data.code) {
-            codeEl.textContent = data.code;
-            kindEl.textContent = data.kind === 'gift_annual'
-              ? 'Your 1-year gift code'
-              : 'Your one-film gift code';
+            setGiftReady(data.code, data.kind);
             statusEl.textContent = data.message || 'Ready to share.';
             return;
           }
@@ -154,6 +168,22 @@
         if (!text || text.indexOf('—') === 0) return;
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text);
+        }
+      });
+
+      pdfBtn.addEventListener('click', async function () {
+        if (!giftReady || !window.MomentroGiftCertificate) return;
+        var original = pdfBtn.textContent;
+        pdfBtn.disabled = true;
+        pdfBtn.textContent = 'Preparing PDF…';
+        try {
+          await window.MomentroGiftCertificate.download(codeEl.textContent, giftKind);
+          statusEl.textContent = 'PDF downloaded — print it or attach it to an email.';
+        } catch (err) {
+          statusEl.textContent = (err && err.message) || 'Could not create the PDF. Try again.';
+        } finally {
+          pdfBtn.textContent = original;
+          pdfBtn.disabled = !giftReady;
         }
       });
 
