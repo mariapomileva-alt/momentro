@@ -79,6 +79,15 @@
         <a class="btn btn-light" href="https://download.momentro.me/mac">Download Momentro</a>
         <a class="btn btn-light" href="../gift/">Buy another gift</a>
       </div>
+      <div id="emailRecover" style="margin-top:16px;display:none">
+        <p class="status" style="margin:0 0 8px">
+          No order id in this link. Enter the email used at checkout to look up your gift code:
+        </p>
+        <div class="actions" style="margin-top:0">
+          <input id="recoverEmail" type="email" placeholder="you@email.com" style="flex:1;min-width:180px;padding:10px 12px;border-radius:12px;border:1px solid #cde8b2;font:inherit" />
+          <button class="btn btn-primary" type="button" id="recoverBtn">Find my code</button>
+        </div>
+      </div>
       <p class="status" style="margin-top:14px">
         Recipient: open Momentro → Account → paste the code → Redeem.
         Film gifts add 1 unlock credit; year gifts activate 12 months unlimited.
@@ -139,11 +148,13 @@
           ? 'Your 1-year gift code'
           : 'Your one-film gift code';
         pdfBtn.disabled = false;
+        document.getElementById('emailRecover').style.display = 'none';
       }
 
       async function poll() {
         if (!orderId || orderId === '[order_id]') {
-          statusEl.textContent = 'Missing order id. Check your Lemon Squeezy receipt email, or contact hello@momentro.me.';
+          statusEl.textContent = 'We could not read the order id from this page. Use the email lookup below, or write to hello@momentro.me.';
+          document.getElementById('emailRecover').style.display = 'block';
           return;
         }
         try {
@@ -160,8 +171,32 @@
         }
         tries += 1;
         if (tries < 30) setTimeout(poll, 2000);
-        else statusEl.textContent = 'Code is taking longer than expected. Email hello@momentro.me with your order ID.';
+        else {
+          statusEl.textContent = 'Code is taking longer than expected. Try email lookup or contact hello@momentro.me.';
+          document.getElementById('emailRecover').style.display = 'block';
+        }
       }
+
+      document.getElementById('recoverBtn').addEventListener('click', async function () {
+        var email = (document.getElementById('recoverEmail').value || '').trim().toLowerCase();
+        if (!email || email.indexOf('@') < 0) {
+          statusEl.textContent = 'Enter a valid checkout email.';
+          return;
+        }
+        statusEl.textContent = 'Looking up gift codes…';
+        try {
+          var res = await fetch(API + '/v1/gift/by-email?email=' + encodeURIComponent(email));
+          var data = await res.json().catch(function () { return {}; });
+          if (data && data.ok && data.gifts && data.gifts.length) {
+            setGiftReady(data.gifts[0].code, data.gifts[0].kind);
+            statusEl.textContent = 'Found your gift code.';
+            return;
+          }
+          statusEl.textContent = (data && data.message) || 'No unused gift code for that email yet.';
+        } catch (e) {
+          statusEl.textContent = 'Lookup failed. Try again or email hello@momentro.me.';
+        }
+      });
 
       document.getElementById('copyCode').addEventListener('click', function () {
         var text = codeEl.textContent || '';
