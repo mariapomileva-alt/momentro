@@ -81,7 +81,7 @@
       </div>
       <div id="emailRecover" style="margin-top:16px;display:none">
         <p class="status" style="margin:0 0 8px">
-          No order id in this link. Enter the email used at checkout to look up your gift code:
+          Code missing? Enter the email used at checkout to look it up:
         </p>
         <div class="actions" style="margin-top:0">
           <input id="recoverEmail" type="email" placeholder="you@email.com" style="flex:1;min-width:180px;padding:10px 12px;border-radius:12px;border:1px solid #cde8b2;font:inherit" />
@@ -138,6 +138,7 @@
         giftPanel.hidden = false;
         regularPanel.hidden = true;
         lead.textContent = 'Thanks for gifting Momentro. Copy the code below, or download a printable PDF certificate.';
+        document.getElementById('emailRecover').style.display = 'block';
       }
 
       function setGiftReady(code, kind) {
