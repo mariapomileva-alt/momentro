@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- DRAFT — NOT DEPLOYED -->
+  <title>How to Organize Family Videos Across Phones, Drives, and Cloud Storage | Momentro Guides</title>
+  <meta name="description" content="A practical family system to organize videos across phones, external drives, and cloud folders without getting overwhelmed." />
+  <link rel="canonical" href="https://momentro.me/guides/organize-family-videos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to Organize Family Videos Across Phones, Drives, and Cloud Storage" />
+  <meta property="og:description" content="A practical family system to organize videos across phones, external drives, and cloud folders without getting overwhelmed." />
+  <meta property="og:url" content="https://momentro.me/guides/organize-family-videos/" />
+  <meta property="og:image" content="https://momentro.me/app-icon-1024.png" />
+  <meta property="article:section" content="Organize footage" />
+  <meta property="article:published_time" content="2026-10-08" />
+  <meta property="article:modified_time" content="2026-10-08" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Organize Family Videos Across Phones, Drives, and Cloud Storage" />
+  <meta name="twitter:description" content="A practical family system to organize videos across phones, external drives, and cloud folders without getting overwhelmed." />
+  <meta name="twitter:image" content="https://momentro.me/app-icon-1024.png" />
+  <link rel="shortcut icon" href="../../favicon.ico?v=4" />
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32-v2.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16-v2.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon-v2.png?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy: #10233d; --navy-2: #0d1a2f; --ink: #0f223e; --bg: #f4f9ef; --panel: #ffffff; --line: #dbe8cf; --green: #89ff2e; --muted: #5a677f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: radial-gradient(circle at 12% 0%, #ffffff 0%, var(--bg) 46%); letter-spacing: -0.01em; }
+    .shell { max-width: 900px; margin: 0 auto; padding: 24px 20px 64px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); font-size: 28px; font-weight: 900; letter-spacing: -0.02em; }
+    .brand-mark { width: 40px; height: 40px; border-radius: 12px; background: var(--navy); color: var(--green); display: grid; place-items: center; line-height: 0; }
+    .brand-mark svg { width: 90%; height: 90%; display: block; }
+    .small-link { text-decoration: none; color: #20402f; border: 1px solid #abc58f; border-radius: 12px; padding: 8px 12px; font-size: 12px; font-weight: 800; letter-spacing: 0.2px; }
+    .article-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; box-shadow: 0 14px 28px rgba(15, 34, 62, 0.06); }
+    .breadcrumbs { margin: 0 0 14px; font-size: 12px; color: #607289; font-weight: 700; letter-spacing: 0.2px; }
+    .breadcrumbs a { color: #35567b; text-decoration: none; border-bottom: 1px solid rgba(53, 86, 123, 0.35); }
+    h1 { margin: 0 0 8px; font-size: 44px; line-height: 0.96; letter-spacing: -0.02em; color: #132a49; }
+    .dek { margin: 0 0 14px; font-size: 17px; line-height: 1.45; color: #516375; font-weight: 700; letter-spacing: 0; }
+    .meta { margin: 0 0 18px; color: #6b7d94; font-size: 13px; font-weight: 700; letter-spacing: 0.1px; }
+    h2 { margin: 22px 0 10px; font-size: 30px; line-height: 1; color: #132a49; letter-spacing: -0.02em; }
+    p, li { font-size: 16px; line-height: 1.65; color: #2b3e5a; font-weight: 600; letter-spacing: 0; }
+    ul, ol { padding-left: 20px; }
+    .note { border-left: 4px solid var(--green); background: #f7fff1; border-radius: 10px; padding: 10px 12px; margin: 16px 0; font-size: 14px; color: #274566; font-weight: 700; }
+    .related { margin-top: 26px; border-top: 1px solid #e0ecd3; padding-top: 16px; }
+    .related h2 { margin-top: 0; font-size: 26px; }
+    .related ul { margin: 0; padding-left: 18px; }
+    .cta { margin-top: 24px; border-radius: 14px; background: linear-gradient(130deg, var(--navy) 5%, var(--navy-2) 100%); border: 1px solid #2f4665; padding: 16px; color: #f4ffef; }
+    .cta h2 { margin: 0 0 8px; font-size: 25px; color: #f4ffef; }
+    .cta p { margin: 0 0 10px; color: #d5e3f5; font-size: 14px; line-height: 1.45; font-weight: 700; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { border-radius: 12px; padding: 10px 14px; text-decoration: none; font-size: 13px; font-weight: 800; border: 1px solid transparent; display: inline-flex; align-items: center; justify-content: center; }
+    .btn-primary { background: var(--green); border-color: var(--green); color: #0d1a2f; }
+    .btn-light { background: transparent; border-color: #75ab44; color: #deffc6; }
+    footer { margin-top: 20px; text-align: center; font-size: 13px; color: #698070; }
+    footer a { color: #2b5c49; text-decoration: none; border-bottom: 1px solid rgba(43, 92, 73, 0.25); padding-bottom: 1px; }
+    @media (max-width: 700px) { .shell { padding: 18px 16px 56px; } h1 { font-size: 34px; } h2 { font-size: 24px; } .article-wrap { padding: 18px; } .topbar { flex-direction: column; align-items: flex-start; } .cta-row { flex-direction: column; align-items: stretch; } .btn { width: 100%; } }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Organize Family Videos Across Phones, Drives, and Cloud Storage",
+      "description": "A practical family system to organize videos across phones, external drives, and cloud folders without getting overwhelmed.",
+      "author": {
+        "@type": "Organization",
+        "name": "Momentro Editorial Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Momentro"
+      },
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://momentro.me/guides/organize-family-videos/"
+      },
+      "image": [
+        "https://momentro.me/app-icon-1024.png"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Guides",
+          "item": "https://momentro.me/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organize footage",
+          "item": "https://momentro.me/guides/#organize-footage"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Organize Family Videos Across Phones, Drives, and Cloud Storage",
+          "item": "https://momentro.me/guides/organize-family-videos/"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="Momentro home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M9 31V9L20 23L31 9V31" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span>Momentro</span>
+      </a>
+      <a class="small-link" href="../">All guides</a>
+    </header>
+
+    <main class="article-wrap">
+      <p class="breadcrumbs">
+        <a href="../">Guides</a> / <a href="../#organize-footage">Organize footage</a> / How to Organize Family Videos Across Phones, Drives, and Cloud Storage
+      </p>
+      <article>
+        <h1>How to Organize Family Videos Across Phones, Drives, and Cloud Storage</h1>
+        <p class="dek">Use a simple weekly system so family clips from phones, cameras, old drives, and shared folders stay findable and ready for a film.</p>
+        <p class="meta">By Momentro Editorial Team · Updated October 8, 2026 · 11 min read</p>
+
+        <h2>What this guide helps you do</h2>
+        <p>Most families do not have a filming problem. They have a finding problem. A birthday song lives on one parent&apos;s phone, a funny reaction is in a grandparent&apos;s cloud album, and the best wide shot is on an old USB drive with a label like "backup-final-2." This guide gives you a repeatable way to gather and label family video clips across devices and shared sources without turning it into a weekend-long project.</p>
+        <p>The same intake structure also helps when a family film includes travel footage from one parent&apos;s phone, another person&apos;s action camera, and a couple of drone clips from the same trip.</p>
+        <p>The goal is not to build a perfect archive. The goal is to make it easy to pull together the right clips when you want to create a watchable film for your family. For many households, a full cloud upload or re-upload of everything is too slow or inconvenient at this volume. If you use Momentro, think of this as prep work: select the clips that matter, run analysis on your computer, review, then export. The organization habits in this guide are useful no matter what editing tool you use.</p>
+
+        <h2>Start with one truth: your system must fit real life</h2>
+        <p>A family organization system fails when it asks for daily discipline. If your routine depends on naming every clip right after recording, it will break by Tuesday. Instead, design for tired evenings and busy schedules:</p>
+        <ul>
+          <li>Keep one intake day each week (20 to 30 minutes).</li>
+          <li>Use broad categories first; details can come later.</li>
+          <li>Prefer consistent naming over perfect naming.</li>
+          <li>Store work-in-progress files where everyone expects them.</li>
+        </ul>
+        <p>This is the same principle used in personal digital archiving guidance: consistency beats complexity over time. The <a href="https://www.loc.gov/preservation/digital/formats/fdd/video_fdd.shtml">Library of Congress format guidance</a> is a useful starting point if you want to go deeper into preservation details later.</p>
+
+        <h2>Build your folder map before moving anything</h2>
+        <p>Create one top-level folder called <strong>Family Videos</strong>. Inside it, use only three folders at first:</p>
+        <ol>
+          <li><strong>01_Inbox</strong> for newly collected clips</li>
+          <li><strong>02_Projects</strong> for active films you are currently shaping</li>
+          <li><strong>03_Archive</strong> for finished projects and older source bundles</li>
+        </ol>
+        <p>Then, inside <strong>02_Projects</strong>, create one project folder per film using a predictable pattern such as <strong>YYYY-MM project-name</strong>. Example: <strong>2026-08 beach-week</strong>. Add two subfolders: <strong>selected-clips</strong> and <strong>exports</strong>. You now have a stable home for clips and output files, no matter where they came from originally.</p>
+        <p class="note">Backup strategy and long-term preservation are important, but they are out of Momentro&apos;s product scope. Treat backup as a separate household process with its own checklist.</p>
+
+        <h2>Use one weekly intake session</h2>
+        <p>Pick a fixed day: Sunday evening, Monday lunch break, whatever you can maintain. During that session, do only three things:</p>
+        <ol>
+          <li>Collect recent clips from each phone, camera, drone or action camera, drive, or cloud export into <strong>01_Inbox</strong>.</li>
+          <li>Rename each batch folder by date and source, such as <strong>2026-10-06-maya-iphone</strong>.</li>
+          <li>Move only your best candidates into a project&apos;s <strong>selected-clips</strong> folder.</li>
+        </ol>
+        <p>Do not review every second of every file during intake. That creates bottlenecks. Skim quickly, flag obvious keepers, and move on. You can fine-tune later when you are actually shaping a film.</p>
+
+        <h2>Decide clips with simple selection rules</h2>
+        <p>When a folder has 300 clips, decision fatigue is real. Use three rules to filter fast:</p>
+        <ul>
+          <li><strong>Keep scenes, not duplicates:</strong> choose one or two clips that represent each moment.</li>
+          <li><strong>Prefer emotional clarity:</strong> visible faces, clear reactions, and understandable action.</li>
+          <li><strong>Protect audio moments:</strong> laughter, a child&apos;s comment, or a song often carries memory better than visuals alone.</li>
+        </ul>
+        <p>If two clips are similar, pick the shorter one unless the longer version adds context. Most family films feel stronger when every shot earns its place.</p>
+
+        <h2>Handle cloud folders without losing context</h2>
+        <p>Cloud galleries are useful for collection, but naming often gets flattened once files are exported. Preserve context by storing a tiny text note in each imported batch folder. Include who shared clips, what event it was, and any key moments to look for. For example:</p>
+        <ul>
+          <li><strong>Source:</strong> cousins-shared-album</li>
+          <li><strong>Event:</strong> lake weekend or city-break travel day</li>
+          <li><strong>Moments:</strong> dock jump, pancake breakfast, group sunset photo</li>
+        </ul>
+        <p>This one-minute note saves hours later when you cannot remember why a batch mattered.</p>
+
+        <h2>Keep editing prep separate from preservation</h2>
+        <p>Many families mix "I need this for this month&apos;s video" with "I need this safely stored forever." Those are different workflows. For editing prep, you want speed and focus. For preservation, you want redundancy and verification.</p>
+        <p>If your priority is an upcoming film, stay in <strong>02_Projects</strong> and keep moving. If your priority is long-term safety, pause and run your backup process outside the editing workflow. The <a href="https://www.archives.gov/preservation/personal-archiving">U.S. National Archives personal archiving guidance</a> can help households choose a preservation routine.</p>
+
+        <h2>Common mistakes (and what to do instead)</h2>
+        <ul>
+          <li><strong>Mistake:</strong> organizing everything before making any film. <strong>Instead:</strong> organize only what supports one specific project this month.</li>
+          <li><strong>Mistake:</strong> creating ten detailed categories. <strong>Instead:</strong> start with three broad folders and evolve only when pain appears.</li>
+          <li><strong>Mistake:</strong> relying on memory for clip meaning. <strong>Instead:</strong> add quick source notes for each imported batch.</li>
+          <li><strong>Mistake:</strong> waiting for "perfect free time." <strong>Instead:</strong> keep a recurring 20-minute intake habit.</li>
+        </ul>
+
+        <h2>A practical monthly rhythm</h2>
+        <p>Use this schedule as a baseline:</p>
+        <ol>
+          <li><strong>Week 1:</strong> collect and label new footage into <strong>01_Inbox</strong>.</li>
+          <li><strong>Week 2:</strong> move selected clips into one project folder.</li>
+          <li><strong>Week 3:</strong> make a short first cut and review it with your family.</li>
+          <li><strong>Week 4:</strong> export and archive the finished version in <strong>03_Archive</strong>.</li>
+        </ol>
+        <p>Even if each step is small, this cadence prevents the "thousands of clips, zero films" trap.</p>
+
+        <h2>Where Momentro fits, realistically</h2>
+        <p>Momentro is best used after you have done basic selection. Analysis, editing, and export happen on your computer, and total processing time depends on your hardware and collection size. A practical pattern is to start analysis, let the machine work, come back to review, make optional refinements, then start export and do other tasks while it completes.</p>
+        <p>It is not a replacement for your digitization process, backup policy, or household media governance. Treat it as your "turn selected clips into something people can watch this week" step.</p>
+      </article>
+
+      <section class="related" aria-label="Related guides">
+        <h2>Read next</h2>
+        <ul>
+          <li><a href="../">Guides hub: family and travel video workflow overview</a></li>
+          <li><a href="../family-video-people-rewatch/">Same-cluster companion: make videos people rewatch</a></li>
+          <li><a href="../family-vacation-video-from-phone-clips/">Cross-cluster guide: build a trip film from shared phone clips</a></li>
+        </ul>
+      </section>
+
+      <section class="cta" aria-label="Download Momentro">
+        <h2>Ready to turn selected clips into one film?</h2>
+        <p>After your weekly intake, use Momentro on desktop to shape your chosen clips into a watchable draft, review it, and then export when you are happy with the flow.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+          <a class="btn btn-light" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="../">Back to Guides</a> · <a href="../../privacy/">Privacy</a> · <a href="../../terms/">Terms</a>
+    </footer>
+  </div>
+</body>
+</html>

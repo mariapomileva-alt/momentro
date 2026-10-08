@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momentro Guides | Family and Travel Video Editing Workflows</title>
+  <meta name="description" content="Practical, honest guides to organize family and travel footage, make films people rewatch, cover trips and events, and preserve or share your memories." />
+  <link rel="canonical" href="https://momentro.me/guides/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Momentro Guides | Family and Travel Video Editing Workflows" />
+  <meta property="og:description" content="Clear, practical guides for organizing family and travel clips, building stories, and preserving memories." />
+  <meta property="og:url" content="https://momentro.me/guides/" />
+  <meta property="og:image" content="https://momentro.me/app-icon-1024.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Momentro Guides | Family and Travel Video Editing Workflows" />
+  <meta name="twitter:description" content="Family and travel video guides that help you turn scattered clips into stories people watch again." />
+  <meta name="twitter:image" content="https://momentro.me/app-icon-1024.png" />
+  <link rel="shortcut icon" href="../favicon.ico?v=4" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32-v2.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16-v2.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-v2.png?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #10233d;
+      --navy-2: #0d1a2f;
+      --ink: #0f223e;
+      --bg: #f4f9ef;
+      --panel: #ffffff;
+      --line: #dbe8cf;
+      --green: #89ff2e;
+      --muted: #5a677f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      background: radial-gradient(circle at 12% 0%, #ffffff 0%, var(--bg) 46%);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 30px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: var(--navy);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      line-height: 0;
+    }
+
+    .brand-mark svg {
+      width: 90%;
+      height: 90%;
+      display: block;
+    }
+
+    .btn {
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #f6fff1;
+    }
+
+    .btn-light {
+      border-color: #abc58f;
+      color: #20402f;
+      background: transparent;
+    }
+
+    .hero {
+      background: linear-gradient(130deg, var(--navy) 5%, var(--navy-2) 100%);
+      border-radius: 24px;
+      color: #f4ffef;
+      padding: 34px;
+      box-shadow: 0 22px 46px rgba(16, 35, 61, 0.24);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #b9d4b3;
+      letter-spacing: 0.2px;
+      font-size: 12px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 50px;
+      line-height: 0.96;
+      max-width: 760px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 740px;
+      color: #dbe6f7;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .momentro-note {
+      margin-top: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(185, 212, 179, 0.4);
+      background: rgba(12, 24, 43, 0.44);
+      padding: 13px 14px;
+      color: #d5e3f5;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .cluster-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+
+    .cluster {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 12px 24px rgba(15, 34, 62, 0.06);
+    }
+
+    .cluster h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 0.96;
+    }
+
+    .cluster p {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .cluster ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #284466;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .reading-path {
+      background: linear-gradient(145deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid #dde7f6;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .pathway-card {
+      background: #ffffff;
+      border: 1px solid #dde7f6;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 20px rgba(15, 34, 62, 0.05);
+    }
+    .pathway-card h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 0.96;
+    }
+    .pathway-card p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .pathway-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #284466;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+    .pathway-card a {
+      color: #2b5c49;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(43, 92, 73, 0.35);
+    }
+
+    .reading-path h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 0.96;
+    }
+
+    .reading-path p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .reading-path ol {
+      margin: 0;
+      padding-left: 20px;
+      color: #284466;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .cta {
+      border-radius: 18px;
+      background: linear-gradient(130deg, var(--navy) 5%, var(--navy-2) 100%);
+      border: 1px solid #2f4665;
+      color: #f4ffef;
+      padding: 20px;
+    }
+
+    .cta h2 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 0.96;
+    }
+
+    .cta p {
+      margin: 0 0 12px;
+      color: #d5e3f5;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      max-width: 640px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cta .btn-primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #0d1a2f;
+    }
+
+    .cta small {
+      display: block;
+      margin-top: 8px;
+      color: #d2e5fb;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 13px;
+      color: #698070;
+    }
+
+    footer a {
+      color: #2b5c49;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(43, 92, 73, 0.25);
+      padding-bottom: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .cluster-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { padding: 18px 16px 56px; }
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand { font-size: 26px; }
+      .brand-mark { width: 38px; height: 38px; border-radius: 11px; }
+      .hero { padding: 24px 20px; }
+      h1 { font-size: 34px; }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .cta-row .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../" aria-label="Momentro home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M9 31V9L20 23L31 9V31" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span>Momentro</span>
+      </a>
+      <a class="btn btn-light" href="../">Back to main site</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Family and Travel Video Guides</p>
+        <h1>Guides for turning scattered family and travel clips into finished films.</h1>
+        <p>
+          This section is for families and travelers with footage spread across phones, cameras, drones or action cameras, old drives, and cloud folders.
+          Every guide stays practical: gather what matters, shape a watchable story, and finish without pretending the process is instant.
+        </p>
+        <p class="momentro-note">
+          Momentro runs analysis, editing, and export on your computer. Large collections can take real time depending on your device, so a common workflow is: start analysis, let it run, come back to review, make optional adjustments, then start export while you do other things.
+        </p>
+      </section>
+
+      <section class="cluster-grid" aria-label="Guide clusters">
+        <article class="cluster" id="organize-footage">
+          <h2>Organize footage</h2>
+          <p>Simple systems for scattered footage across multiple devices and shared sources.</p>
+          <ul>
+            <li>Create a no-stress intake routine for phones, cameras, drones, old drives, and shared clips</li>
+            <li>Use filenames and folders that still make sense in six months</li>
+            <li>Decide what to archive, what to trim, and what to delete</li>
+          </ul>
+        </article>
+
+        <article class="cluster" id="rewatchable-films">
+          <h2>Make films people rewatch</h2>
+          <p>Story-first methods for short, emotional videos people replay.</p>
+          <ul>
+            <li>Pick scenes that build feeling, not just chronology</li>
+            <li>Find a natural beginning, middle, and ending from daily or trip moments</li>
+            <li>Keep pacing tight and leave time for one real review before export</li>
+          </ul>
+        </article>
+
+        <article class="cluster" id="trips-events">
+          <h2>Family trips and events</h2>
+          <p>Repeatable playbooks for birthdays, vacations, milestones, and group travel highlights.</p>
+          <ul>
+            <li>Capture key shots without living behind your phone</li>
+            <li>Handle multi-day events and many contributors without getting overwhelmed</li>
+            <li>Turn dozens of mini clips into one coherent highlight film</li>
+          </ul>
+        </article>
+
+        <article class="cluster" id="preserve-share">
+          <h2>Preserve and share</h2>
+          <p>Keep memories safe and easy to revisit across years and generations.</p>
+          <ul>
+            <li>Build backup habits that work for real family schedules</li>
+            <li>Share with relatives using the right file format for your context</li>
+            <li>Create yearly collections your kids can rewatch later</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="reading-path" aria-labelledby="reading-path-title">
+        <h2 id="reading-path-title">Start here: a simple reading path</h2>
+        <p>A practical internal-linking pattern for this section is one pillar article per cluster, each linking to:</p>
+        <ol>
+          <li>One guide from another cluster for context</li>
+          <li>The cluster pillar for deeper reading</li>
+          <li>This hub as the “Guides home” reference point</li>
+        </ol>
+        <p>
+          Across the section, you will see one recurring theme: family and travel footage is often split across many sources, the total volume can be too large for convenient cloud upload or re-upload, and desktop processing still takes time based on your computer resources.
+        </p>
+      </section>
+
+      <section class="pathway-grid" aria-label="Family and travel pathways">
+        <article class="pathway-card">
+          <h2>Family films pathway</h2>
+          <p>Start with a stable family workflow, then improve story and annual rewatch value.</p>
+          <ul>
+            <li><a href="./organize-family-videos/">How to Organize Family Videos Across Phones, Drives, and Cloud Storage</a></li>
+            <li><a href="./family-video-people-rewatch/">How to Make a Family Video People Will Actually Rewatch</a></li>
+            <li><a href="./year-in-review-family-film/">How to Make a Year-in-Review Family Film Without Sorting Every Single Clip</a></li>
+          </ul>
+        </article>
+        <article class="pathway-card">
+          <h2>Travel films pathway</h2>
+          <p>Start with group-trip clips, then branch into family-story editing and yearly memory films.</p>
+          <ul>
+            <li><a href="./family-vacation-video-from-phone-clips/">How to Make a Family Vacation Video From Everyone's Phone Clips</a></li>
+            <li><a href="./travel-footage-to-film-without-pro-editing/">How to Turn Travel Footage Into a Film Without Learning Professional Editing</a></li>
+            <li><a href="./family-video-people-rewatch/">How to Make a Family Video People Will Actually Rewatch</a></li>
+            <li><a href="./year-in-review-family-film/">How to Make a Year-in-Review Family Film Without Sorting Every Single Clip</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="cta" aria-label="Download Momentro">
+        <h2>Want to move from scattered clips to one finished family or travel film?</h2>
+        <p>
+          You can apply these guides manually in any editor. If you want a guided desktop workflow, Momentro helps you assemble selected clips, review the draft, make small changes if needed, then export while your computer finishes the job.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://download.momentro.me/windows/latest">Download for Windows</a>
+          <a class="btn btn-light" href="https://download.momentro.me/macos/latest">Download for Mac</a>
+        </div>
+        <small>First export free with watermark. Upgrade only if you like the result.</small>
+      </section>
+    </main>
+
+    <footer>
+      Momentro Guides
+      <br />
+      <a href="../privacy/">Privacy</a> · <a href="../terms/">Terms</a> · <a href="../">Main landing page</a>
+    </footer>
+  </div>
+</body>
+</html>

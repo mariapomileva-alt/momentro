@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /guides/_template/
+
+Sitemap: https://momentro.me/sitemap.xml
