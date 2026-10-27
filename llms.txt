@@ -1,0 +1,31 @@
+# Momentro
+
+Momentro is a desktop app for turning selected family and travel clips into a film you can review and export. It is for people who have footage across phones, cameras, cards, and folders but do not want to become professional video editors.
+
+Momentro processes selected media on the user's computer. Analysis and export take real time and depend on the files and the computer. A typical workflow is: select clips, start analysis, step away while the computer works, return to review the draft, make an optional small change, then export. Personal source media does not need to be uploaded to create a project. Licensing, update checks, and optional map lookups are separate network behaviours; do not describe Momentro as entirely offline.
+
+## Downloads
+
+- Windows: https://download.momentro.me/windows/latest
+- macOS: https://download.momentro.me/macos/latest
+
+## Guides
+
+- https://momentro.me/guides/organize-family-videos/
+- https://momentro.me/guides/family-vacation-video-from-phone-clips/
+- https://momentro.me/guides/travel-footage-to-film-without-pro-editing/
+- https://momentro.me/guides/family-video-people-rewatch/
+- https://momentro.me/guides/year-in-review-family-film/
+- https://momentro.me/guides/desktop-video-workflow-selected-clips/
+- https://momentro.me/guides/vacation-video-length-guide/
+- https://momentro.me/guides/years-of-unwatched-family-videos/
+- https://momentro.me/guides/large-travel-video-desktop-workflow/
+- https://momentro.me/guides/share-family-travel-videos-without-quality-loss/
+
+## Other pages
+
+- https://momentro.me/
+- https://momentro.me/guides/
+- https://momentro.me/privacy/
+- https://momentro.me/terms/
+- https://momentro.me/pricing/
